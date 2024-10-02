@@ -1,0 +1,7 @@
+:root {
+  --color-background-body: rgb(235, 243, 250);
+  --color-background-header: rgb(210, 231, 250);
+  --color-text: darkred;
+  --color-border: var(--color-text);
+  --color-link: green;
+}

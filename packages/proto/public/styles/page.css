@@ -1,0 +1,26 @@
+body {
+  background-color: var(--color-background-body);
+  color: var(--color-text);
+}
+
+header {
+  background-color: var(--color-background-header);
+  color: var(--color-text);
+  font-style: oblique;
+  font-size: 24px;
+  text-align: center;
+  border-color: currentColor;
+  border: 1px solid darkred;
+}
+
+h2 {
+  opacity: 75%;
+}
+
+a {
+  color: var(--color-link);
+}
+
+a:visited {
+  color: var(--color-link);
+}
