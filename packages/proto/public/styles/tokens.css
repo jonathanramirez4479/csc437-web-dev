@@ -4,4 +4,14 @@
   --color-text: darkred;
   --color-border: var(--color-text);
   --color-link: green;
+
+  --font-family-body: "Cardo", serif, system-ui;
+  --font-family-display: "Philosopher", sans-serif, system-ui;
+
+  --font-weight-normal: 400;
+  --font-weight-light: 200;
+  --font-weight-bold: 700;
+
+  --font-line-height-body: 1.5;
+  --font-line-height-display: 1.125;
 }
