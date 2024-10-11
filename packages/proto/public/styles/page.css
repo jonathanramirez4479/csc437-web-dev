@@ -17,6 +17,14 @@ header {
   border: 1px solid darkred;
 }
 
+header a {
+  color: inherit;
+}
+
+header a:visited {
+  color: inherit;
+}
+
 h2 {
   opacity: 75%;
 }
