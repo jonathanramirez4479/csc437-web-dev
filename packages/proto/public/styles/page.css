@@ -5,6 +5,9 @@ body {
 }
 
 header {
+  display: flex;
+  flex-direction: column;
+
   background-color: var(--color-background-header);
   color: var(--color-text);
 
@@ -15,6 +18,39 @@ header {
   text-align: center;
   border-color: currentColor;
   border: 1px solid darkred;
+}
+
+#primary-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: baseline;
+}
+
+#primary-header > .title {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  text-align: center;
+  margin-left: 6em;
+}
+
+#primary-header > .profile-pic {
+  height: 2em;
+  width: 2em;
+  border-radius: 45%;
+  margin-right: 2em;
+}
+
+#sub-header {
+  display: flex;
+  justify-content: center;
+}
+
+#sub-header h5 {
+  margin: 0;
+  padding: 10px;
+  padding-bottom: 0px;
 }
 
 header a {
