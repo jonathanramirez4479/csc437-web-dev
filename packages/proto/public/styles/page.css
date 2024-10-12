@@ -53,6 +53,61 @@ header {
   padding-bottom: 0px;
 }
 
+.category-page {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 50px;
+}
+
+.grid-item {
+  margin-top: 3em;
+  flex: 1;
+  justify-items: center;
+  width: 300px;
+  height: 250px;
+  border-radius: 10%;
+  position: relative; /* Add this to position overlay */
+  overflow: hidden;
+  position: relative;
+  border-color: black;
+  border: solid;
+  border-width: 1px;
+}
+
+.grid-item > .card {
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+}
+
+.grid-item .overlay {
+  position: absolute; /* Position overlay over the image */
+  bottom: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  right: 0; /* Stretch to the right */
+  display: flex; /* Center text */
+  height: 50%;
+  align-items: center; /* Vertically center text */
+  justify-content: center; /* Horizontally center text */
+  opacity: 0; /* Hide overlay initially */
+  transition: opacity 0.3s; /* Smooth opacity transition */
+  background-color: white;
+}
+
+.grid-item:hover .card {
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.grid-item:hover .overlay {
+  opacity: 2; /* Show overlay on hover */
+}
+
 header a {
   color: inherit;
 }
