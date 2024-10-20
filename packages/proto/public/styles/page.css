@@ -11,13 +11,13 @@ header {
   background-color: var(--color-background-header);
   color: var(--color-text);
 
-  font-size: 24px;
+  font-size: var(--font-style-header);
   font-family: var(--font-family-display);
   font-style: normal;
 
   text-align: center;
   border-color: currentColor;
-  border: 1px solid darkred;
+  border: 1px solid var(--color-text);
 }
 
 #primary-header {
@@ -36,9 +36,9 @@ header {
 }
 
 #primary-header > .profile-pic {
-  height: 2em;
-  width: 2em;
-  border-radius: 45%;
+  height: var(--height-avatar-header);
+  width: var(--width-avatar-header);
+  border-radius: var(--border-radius-avatar-header);
   margin-right: 2em;
 }
 
@@ -48,9 +48,8 @@ header {
 }
 
 #sub-header h5 {
-  margin: 0;
-  padding: 10px;
-  padding-bottom: 0px;
+  padding: var(--padding-sub-header);
+  padding-bottom: var(--padding-bottom-sub-header);
 }
 
 .category-page {
@@ -60,23 +59,20 @@ header {
   justify-items: center;
   align-items: center;
   width: 100%;
-  gap: 10px;
-  margin-bottom: 50px;
+  gap: var(--grid-gap-category-page);
+  margin-bottom: var(--margin-bottom-category-page);
 }
 
 .grid-item {
-  margin-top: 3em;
+  margin-top: var(--margin-top-grid-item);
   flex: 1;
   justify-items: center;
-  width: 300px;
-  height: 250px;
-  border-radius: 10%;
+  width: var(--width-grid-item);
+  height: var(--height-grid-item);
+  border-radius: var(--border-radius-grid-item);
   position: relative; /* Add this to position overlay */
   overflow: hidden;
   position: relative;
-  border-color: black;
-  border: solid;
-  border-width: 1px;
 }
 
 .grid-item > .card {
@@ -91,7 +87,7 @@ header {
   left: 0; /* Align to the left */
   right: 0; /* Stretch to the right */
   display: flex; /* Center text */
-  height: 50%;
+  height: var(--height-grid-item-overlay);
   align-items: center; /* Vertically center text */
   justify-content: center; /* Horizontally center text */
   opacity: 0; /* Hide overlay initially */
@@ -100,12 +96,12 @@ header {
 }
 
 .grid-item:hover .card {
-  opacity: 0.5;
+  opacity: var(--opacity-card-hover);
   transition: opacity 0.3s;
 }
 
 .grid-item:hover .overlay {
-  opacity: 2; /* Show overlay on hover */
+  opacity: 1; /* Show overlay on hover */
 }
 
 header a {
@@ -117,7 +113,7 @@ header a:visited {
 }
 
 h2 {
-  opacity: 75%;
+  opacity: var(--opacity-h2);
 }
 
 a {
@@ -130,8 +126,8 @@ a:visited {
 
 svg.icon {
   display: inline;
-  height: 2em;
-  width: 2em;
+  height: var(--height-svg);
+  width: var(--width-svg);
   vertical-align: top;
   fill: currentColor;
 }

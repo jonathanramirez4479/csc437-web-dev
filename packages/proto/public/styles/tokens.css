@@ -5,8 +5,13 @@
   --color-border: var(--color-text);
   --color-link: green;
 
+  --height-svg: 2em;
+  --width-svg: 2em;
+
   --font-family-body: "Cardo", serif, system-ui;
   --font-family-display: "Philosopher", sans-serif, system-ui;
+
+  --opacity-h2: 75%;
 
   --font-weight-normal: 400;
   --font-weight-light: 200;
@@ -14,4 +19,26 @@
 
   --font-line-height-body: 1.5;
   --font-line-height-display: 1.125;
+
+  --font-size-header: 24px;
+
+  --height-avatar-header: 2em;
+  --width-avatar-header: 2em;
+
+  --border-radius-avatar-header: 45%;
+
+  --padding-sub-header: 10px;
+  --padding-bottom-sub-header: 0px;
+
+  --grid-gap-category-page: 10px;
+  --margin-bottom-category-page: 50px;
+
+  --margin-top-grid-item: 3em;
+  --width-grid-item: 300px;
+  --height-grid-item: 250px;
+  --border-radius-grid-item: 10%;
+
+  --height-grid-item-overlay: 50%;
+
+  --opacity-card-hover: 0.5;
 }
