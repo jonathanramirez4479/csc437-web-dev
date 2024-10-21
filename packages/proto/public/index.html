@@ -11,26 +11,24 @@
       href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+
+      define({
+        "header-element": HeaderElement,
+      });
+    </script>
   </head>
   <body>
-    <header>
-      <div id="primary-header">
-        <div class="title">
-          <h1>Resident Evil Wiki</h1>
-          <svg class="icon">
-            <use href="/icons/umbrella-corp.svg#icon-umbrella-corp" />
-          </svg>
-        </div>
-        <img class="profile-pic" src="/images/profile-pic.jpg" />
-      </div>
-      <div id="sub-header">
-        <h5><a href="index.html">Home</a></h5>
-        <h5><a href="/pages/games.html">Games</a></h5>
-        <h5><a href="/pages/movies.html">Movies</a></h5>
-        <h5><a href="/pages/characters.html">Characters</a></h5>
-        <h5><a href="/pages/locations.html">Locations</a></h5>
-      </div>
-    </header>
+    <header-element></header-element>
     <section class="category">
       <h2 class="category-header">
         <svg class="icon">
