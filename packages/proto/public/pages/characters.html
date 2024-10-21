@@ -20,10 +20,10 @@
     </script>
     <script type="module">
       import { define } from "@calpoly/mustang";
-      import { LocationCard } from "/scripts/location-card.js";
+      import { CharacterCard } from "/scripts/character-card.js";
 
       define({
-        "location-card": LocationCard,
+        "character-card": CharacterCard,
       });
     </script>
   </head>
@@ -47,24 +47,27 @@
       </div>
     </header>
     <main class="category-page">
-      <location-card>
-        <img slot="image" src="/images/locations/rcpd.webp" />
-        <span slot="name">Racoon City Police Department</span>
-        <span slot="first-shown-in">Resident Evil 2</span>
+      <character-card>
+        <img slot="image" src="/images/character-portraits/wesker.jpg" />
+        <span slot="name">Albert Wesker</span>
+        <span slot="character-type">Villain</span>
         <span slot="fan-rating">5/5</span>
-      </location-card>
-      <location-card>
-        <img slot="image" src="/images/locations/rockfort-prison.webp" />
-        <span slot="name">Rockfort Prison</span>
-        <span slot="first-shown-in">Resident Evil Code: Veronica X</span>
-        <span slot="fan-rating">2.5/5</span>
-      </location-card>
-      <location-card>
-        <img slot="image" src="/images/locations/re3-downtown-rc.webp" />
-        <span slot="name">Downtown Racoon City</span>
-        <span slot="first-shown-in">Resident Evil 3</span>
-        <span slot="fan-rating">4/5</span>
-      </location-card>
+      </character-card>
+      <character-card>
+        <img slot="image" src="/images/character-portraits/nemesis.webp" />
+        <span slot="name">Nemesis</span>
+        <span slot="character-type">Villain</span>
+        <span slot="fan-rating">4.5/5</span>
+      </character-card>
+      <character-card>
+        <img
+          slot="image"
+          src="/images/character-portraits/chris-redfield.jpg"
+        />
+        <span slot="name">Chris Redfield</span>
+        <span slot="character-type">Hero</span>
+        <span slot="fan-rating">5/5</span>
+      </character-card>
     </main>
   </body>
 </html>

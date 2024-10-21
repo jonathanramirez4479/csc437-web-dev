@@ -11,6 +11,21 @@
       href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { MovieCard } from "/scripts/movie-card.js";
+
+      define({
+        "movie-card": MovieCard,
+      });
+    </script>
   </head>
   <body>
     <header>
@@ -27,75 +42,32 @@
         <h5><a href="../index.html">Home</a></h5>
         <h5><a href="/pages/games.html">Games</a></h5>
         <h5><a href="/pages/movies.html">Movies</a></h5>
-        <h5><a href="/pages/heroes.html">Heroes</a></h5>
-        <h5><a href="/pages/foes.html">Foes</a></h5>
+        <h5><a href="/pages/characters.html">Characters</a></h5>
         <h5><a href="/pages/locations.html">Locations</a></h5>
       </div>
     </header>
     <main class="category-page">
-      <div class="grid-item">
+      <movie-card>
         <img
-          class="card"
+          slot="image"
           src="/images/movie-covers/resident-evil-apocalypse.jpg"
         />
-        <div class="overlay">
-          <span>Text goes here</span>
-        </div>
-      </div>
-      <div class="grid-item">
-        <img
-          class="card"
-          src="/images/movie-covers/resident-evil-apocalypse.jpg"
-        />
-        <div class="overlay">
-          <span>Text goes here</span>
-        </div>
-      </div>
-      <div class="grid-item">
-        <img
-          class="card"
-          src="/images/movie-covers/resident-evil-apocalypse.jpg"
-        />
-        <div class="overlay">
-          <span>Text goes here</span>
-        </div>
-      </div>
-      <div class="grid-item">
-        <img
-          class="card"
-          src="/images/movie-covers/resident-evil-apocalypse.jpg"
-        />
-        <div class="overlay">
-          <span>Text goes here</span>
-        </div>
-      </div>
-      <div class="grid-item">
-        <img
-          class="card"
-          src="/images/movie-covers/resident-evil-apocalypse.jpg"
-        />
-        <div class="overlay">
-          <span>Text goes here</span>
-        </div>
-      </div>
-      <div class="grid-item">
-        <img
-          class="card"
-          src="/images/movie-covers/resident-evil-apocalypse.jpg"
-        />
-        <div class="overlay">
-          <span>Text goes here</span>
-        </div>
-      </div>
-      <div class="grid-item">
-        <img
-          class="card"
-          src="/images/movie-covers/resident-evil-apocalypse.jpg"
-        />
-        <div class="overlay">
-          <span>Text goes here</span>
-        </div>
-      </div>
+        <span slot="title">Resident Evil: Apocalypse</span>
+        <span slot="release-date">2004</span>
+        <span slot="imdb-rating">3/5</span>
+      </movie-card>
+      <movie-card>
+        <img slot="image" src="/images/movie-covers/re-retribution.jpg" />
+        <span slot="title">Resident Evil: Retribution</span>
+        <span slot="release-date">2012</span>
+        <span slot="imdb-rating">2/5</span>
+      </movie-card>
+      <movie-card>
+        <img slot="image" src="/images/movie-covers/re.jpg" />
+        <span slot="title">Resident Evil</span>
+        <span slot="release-date">2002</span>
+        <span slot="imdb-rating">4/5</span>
+      </movie-card>
     </main>
   </body>
 </html>

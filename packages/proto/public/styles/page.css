@@ -55,7 +55,7 @@ header {
 .category-page {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   justify-items: center;
   align-items: center;
   width: 100%;
@@ -87,12 +87,15 @@ header {
   left: 0; /* Align to the left */
   right: 0; /* Stretch to the right */
   display: flex; /* Center text */
+  flex-direction: column;
   height: var(--height-grid-item-overlay);
   align-items: center; /* Vertically center text */
   justify-content: center; /* Horizontally center text */
   opacity: 0; /* Hide overlay initially */
   transition: opacity 0.3s; /* Smooth opacity transition */
   background-color: white;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
 }
 
 .grid-item:hover .card {
@@ -102,6 +105,8 @@ header {
 
 .grid-item:hover .overlay {
   opacity: 1; /* Show overlay on hover */
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
 }
 
 header a {
