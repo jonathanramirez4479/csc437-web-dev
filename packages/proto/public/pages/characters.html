@@ -20,10 +20,10 @@
     </script>
     <script type="module">
       import { define } from "@calpoly/mustang";
-      import { GameCard } from "/scripts/game-card.js";
+      import { CharacterCard } from "/scripts/character-card.js";
 
       define({
-        "game-card": GameCard,
+        "character-card": CharacterCard,
       });
     </script>
   </head>
@@ -47,24 +47,27 @@
       </div>
     </header>
     <main class="category-page">
-      <game-card>
-        <img slot="image" src="/images/game-covers/re2.webp" />
-        <span slot="title">Resident Evil 4</span>
-        <span slot="release-date">2023</span>
+      <character-card>
+        <img slot="image" src="/images/character-portraits/wesker.jpg" />
+        <span slot="name">Albert Wesker</span>
+        <span slot="character-type">Villain</span>
         <span slot="fan-rating">5/5</span>
-      </game-card>
-      <game-card>
-        <img slot="image" src="/images/game-covers/re0.jpg" />
-        <span slot="title">Resident Evil 0</span>
-        <span slot="release-date">2002</span>
-        <span slot="fan-rating">3.5/5</span>
-      </game-card>
-      <game-card>
-        <img slot="image" src="/images/game-covers/re4.jpg" />
-        <span slot="title">Resident Evil 2</span>
-        <span slot="release-date">2019</span>
-        <span slot="fan-rating">4/5</span>
-      </game-card>
+      </character-card>
+      <character-card>
+        <img slot="image" src="/images/character-portraits/nemesis.webp" />
+        <span slot="name">Nemesis</span>
+        <span slot="character-type">Villain</span>
+        <span slot="fan-rating">4.5/5</span>
+      </character-card>
+      <character-card>
+        <img
+          slot="image"
+          src="/images/character-portraits/chris-redfield.jpg"
+        />
+        <span slot="name">Chris Redfield</span>
+        <span slot="character-type">Hero</span>
+        <span slot="fan-rating">5/5</span>
+      </character-card>
     </main>
   </body>
 </html>

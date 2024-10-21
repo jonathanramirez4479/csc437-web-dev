@@ -20,10 +20,10 @@
     </script>
     <script type="module">
       import { define } from "@calpoly/mustang";
-      import { GameCard } from "/scripts/game-card.js";
+      import { MovieCard } from "/scripts/movie-card.js";
 
       define({
-        "game-card": GameCard,
+        "movie-card": MovieCard,
       });
     </script>
   </head>
@@ -47,24 +47,27 @@
       </div>
     </header>
     <main class="category-page">
-      <game-card>
-        <img slot="image" src="/images/game-covers/re2.webp" />
-        <span slot="title">Resident Evil 4</span>
-        <span slot="release-date">2023</span>
-        <span slot="fan-rating">5/5</span>
-      </game-card>
-      <game-card>
-        <img slot="image" src="/images/game-covers/re0.jpg" />
-        <span slot="title">Resident Evil 0</span>
+      <movie-card>
+        <img
+          slot="image"
+          src="/images/movie-covers/resident-evil-apocalypse.jpg"
+        />
+        <span slot="title">Resident Evil: Apocalypse</span>
+        <span slot="release-date">2004</span>
+        <span slot="imdb-rating">3/5</span>
+      </movie-card>
+      <movie-card>
+        <img slot="image" src="/images/movie-covers/re-retribution.jpg" />
+        <span slot="title">Resident Evil: Retribution</span>
+        <span slot="release-date">2012</span>
+        <span slot="imdb-rating">2/5</span>
+      </movie-card>
+      <movie-card>
+        <img slot="image" src="/images/movie-covers/re.jpg" />
+        <span slot="title">Resident Evil</span>
         <span slot="release-date">2002</span>
-        <span slot="fan-rating">3.5/5</span>
-      </game-card>
-      <game-card>
-        <img slot="image" src="/images/game-covers/re4.jpg" />
-        <span slot="title">Resident Evil 2</span>
-        <span slot="release-date">2019</span>
-        <span slot="fan-rating">4/5</span>
-      </game-card>
+        <span slot="imdb-rating">4/5</span>
+      </movie-card>
     </main>
   </body>
 </html>

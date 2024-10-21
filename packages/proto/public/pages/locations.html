@@ -20,10 +20,10 @@
     </script>
     <script type="module">
       import { define } from "@calpoly/mustang";
-      import { GameCard } from "/scripts/game-card.js";
+      import { LocationCard } from "/scripts/location-card.js";
 
       define({
-        "game-card": GameCard,
+        "location-card": LocationCard,
       });
     </script>
   </head>
@@ -47,24 +47,24 @@
       </div>
     </header>
     <main class="category-page">
-      <game-card>
-        <img slot="image" src="/images/game-covers/re2.webp" />
-        <span slot="title">Resident Evil 4</span>
-        <span slot="release-date">2023</span>
+      <location-card>
+        <img slot="image" src="/images/locations/rcpd.webp" />
+        <span slot="name">Racoon City Police Department</span>
+        <span slot="first-shown-in">Resident Evil 2</span>
         <span slot="fan-rating">5/5</span>
-      </game-card>
-      <game-card>
-        <img slot="image" src="/images/game-covers/re0.jpg" />
-        <span slot="title">Resident Evil 0</span>
-        <span slot="release-date">2002</span>
-        <span slot="fan-rating">3.5/5</span>
-      </game-card>
-      <game-card>
-        <img slot="image" src="/images/game-covers/re4.jpg" />
-        <span slot="title">Resident Evil 2</span>
-        <span slot="release-date">2019</span>
+      </location-card>
+      <location-card>
+        <img slot="image" src="/images/locations/rockfort-prison.webp" />
+        <span slot="name">Rockfort Prison</span>
+        <span slot="first-shown-in">Resident Evil Code: Veronica X</span>
+        <span slot="fan-rating">2.5/5</span>
+      </location-card>
+      <location-card>
+        <img slot="image" src="/images/locations/re3-downtown-rc.webp" />
+        <span slot="name">Downtown Racoon City</span>
+        <span slot="first-shown-in">Resident Evil 3</span>
         <span slot="fan-rating">4/5</span>
-      </game-card>
+      </location-card>
     </main>
   </body>
 </html>
