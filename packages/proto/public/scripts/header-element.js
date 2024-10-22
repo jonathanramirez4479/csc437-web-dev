@@ -1,4 +1,4 @@
-import { css, html, shadow } from "@calpoly/mustang";
+import { css, html, shadow, Events } from "@calpoly/mustang";
 import reset from "./styles/reset.css.js";
 
 export class HeaderElement extends HTMLElement {
@@ -12,7 +12,7 @@ export class HeaderElement extends HTMLElement {
               <use href="/icons/umbrella-corp.svg#icon-umbrella-corp" />
             </svg>
           </div>
-          <label>
+          <label class="dark-mode-switch">
             <input type="checkbox" autocomplete="off" />
             Dark mode
           </label>
@@ -108,5 +108,23 @@ export class HeaderElement extends HTMLElement {
     shadow(this)
       .template(HeaderElement.template)
       .styles(reset.styles, HeaderElement.styles);
+
+    const dm = this.shadowRoot.querySelector(".dark-mode-switch");
+
+    dm.addEventListener("click", (event) => {
+      Events.relay(event, "dark-mode", {
+        checked: event.target.checked,
+      });
+    });
+  }
+
+  static initializeOnce() {
+    function toggleDarkMode(page, checked) {
+      page.classList.toggle("dark-mode", checked);
+    }
+
+    document.body.addEventListener("dark-mode", (event) => {
+      toggleDarkMode(event.currentTarget, event.detail.checked);
+    });
   }
 }

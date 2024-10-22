@@ -42,3 +42,9 @@
 
   --opacity-card-hover: 0.5;
 }
+
+body.dark-mode {
+  --color-background-body: rgb(4, 41, 99);
+  --color-background-header: rgb(4, 24, 56);
+  --color-text: rgb(216, 0, 0);
+}
