@@ -26,59 +26,33 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var games_exports = {};
-__export(games_exports, {
-  GamesPage: () => GamesPage
+var mongo_exports = {};
+__export(mongo_exports, {
+  connect: () => connect
 });
-module.exports = __toCommonJS(games_exports);
-var import_server = require("@calpoly/mustang/server");
-var import_renderPage = __toESM(require("./renderPage"));
-class GamesPage {
-  data;
-  constructor(data) {
-    this.data = data;
+module.exports = __toCommonJS(mongo_exports);
+var import_mongoose = __toESM(require("mongoose"));
+var import_dotenv = __toESM(require("dotenv"));
+import_mongoose.default.set("debug", true);
+import_dotenv.default.config();
+function getMongoURI(dbname) {
+  let connection_string = `mongodb://localhost:27017/${dbname}`;
+  const { MONGO_USER, MONGO_PWD, MONGO_CLUSTER } = process.env;
+  if (MONGO_USER && MONGO_PWD && MONGO_CLUSTER) {
+    console.log(
+      "Connecting to MongoDB at",
+      `mongodb+srv://${MONGO_USER}:<password>@${MONGO_CLUSTER}/${dbname}`
+    );
+    connection_string = `mongodb+srv://${MONGO_USER}:${MONGO_PWD}@${MONGO_CLUSTER}/${dbname}?retryWrites=true&w=majority`;
+  } else {
+    console.log("Connecting to MongoDB at ", connection_string);
   }
-  render() {
-    return (0, import_renderPage.default)({
-      body: this.renderBody(),
-      stylesheets: [],
-      styles: [],
-      scripts: [
-        `
-        import { define } from "@calpoly/mustang";
-        import { GameCard } from "/scripts/game-card.js";
-        
-        define ({
-          "game-card": GameCard,
-        });
-        `
-      ]
-    });
-  }
-  renderGame(game) {
-    const { imgSrc, title, releaseDate, fanRating } = game;
-    return import_server.html`
-      <game-card>
-        <img slot="image" src=${imgSrc} />
-        <span slot="title">${title}</span>
-        <span slot="release-date">${releaseDate.toDateString()}</span>
-        <span slot="fan-rating">${fanRating}</span>
-      </game-card>
-    `;
-  }
-  renderBody() {
-    const games_list = this.data;
-    const gamesHTML = games_list ? import_server.html` ${games_list.map(this.renderGame)} ` : "";
-    console.log(gamesHTML);
-    return import_server.html`
-      <body>
-        <header-element></header-element>
-        <main class="category-page">${gamesHTML}</main>
-      </body>
-    `;
-  }
+  return connection_string;
+}
+function connect(dbname) {
+  import_mongoose.default.connect(getMongoURI(dbname)).catch((error) => console.log(error));
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  GamesPage
+  connect
 });

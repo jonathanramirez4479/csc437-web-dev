@@ -1,31 +1,28 @@
 import { Game } from "models/game";
+import { Schema, model } from "mongoose";
 
-const gameCards = {
-  re2: {
-    imgSrc: "/images/game-covers/re2.webp",
-    title: "Resident Evil 2",
-    releaseDate: new Date("2022-04-01"),
-    fanRating: 9.5,
+const GameSchema = new Schema<Game>(
+  {
+    imgSrc: { type: String, required: true, trim: true },
+    title: { type: String, required: true, trim: true },
+    releaseDate: { type: Date, required: true },
+    fanRating: { type: Number, required: true },
   },
-  re4: {
-    imgSrc: "/images/game-covers/re4.jpg",
-    title: "Resident Evil 4",
-    releaseDate: new Date("2023-05-1"),
-    fanRating: 10,
-  },
-  re0: {
-    imgSrc: "/images/game-covers/re0.jpg",
-    title: "Resident Evil 0",
-    releaseDate: new Date("2000-09-10"),
-    fanRating: 6.8,
-  },
-};
+  { collection: "games" }
+);
 
-export function getGameCard(_: string) {
-  return gameCards["re2"];
+const GameModel = model<Game>("Game", GameSchema);
+
+function index(): Promise<Game[]> {
+  return GameModel.find();
 }
 
-export function getGameCards() {
-  const games_list = Object.entries(gameCards).map(([key, value]) => value);
-  return games_list;
+function get(userid: String): Promise<Game> {
+  return GameModel.find({ userid })
+    .then((list) => list[0])
+    .catch((err) => {
+      throw `${userid} Not Found`;
+    });
 }
+
+export default { index, get };

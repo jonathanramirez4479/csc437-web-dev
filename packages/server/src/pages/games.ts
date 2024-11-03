@@ -2,7 +2,7 @@ import { html, css } from "@calpoly/mustang/server";
 import { Game } from "../models";
 import renderPage from "./renderPage"; // generic page renderer
 
-export class Games {
+export class GamesPage {
   data: Game[];
 
   constructor(data: Game[]) {

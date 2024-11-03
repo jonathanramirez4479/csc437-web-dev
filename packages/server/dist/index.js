@@ -23,7 +23,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var import_express = __toESM(require("express"));
 var import_games = require("./pages/games");
-var import_game_card_svc = require("./services/game-card-svc");
+var import_game_card_svc = __toESM(require("./services/game-card-svc"));
+var import_mongo = require("./services/mongo");
+(0, import_mongo.connect)("Resident-Evil-Wiki-DB");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
 const staticDir = process.env.STATIC || "public";
@@ -31,10 +33,11 @@ app.use(import_express.default.static(staticDir));
 app.get("/hello", (req, res) => {
   res.send("<h5>Hello world</h5>");
 });
-app.get("/games", (req, res) => {
-  const games_data = (0, import_game_card_svc.getGameCards)();
-  const page = new import_games.Games(games_data);
-  res.set("Content-Type", "text/html").send(page.render());
+app.get("/games/", (req, res) => {
+  import_game_card_svc.default.index().then((data) => {
+    const page = new import_games.GamesPage(data);
+    res.set("Content-Type", "text/html").send(page.render());
+  });
 });
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

@@ -18,39 +18,26 @@ var __copyProps = (to, from, except, desc) => {
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 var game_card_svc_exports = {};
 __export(game_card_svc_exports, {
-  getGameCard: () => getGameCard,
-  getGameCards: () => getGameCards
+  default: () => game_card_svc_default
 });
 module.exports = __toCommonJS(game_card_svc_exports);
-const gameCards = {
-  re2: {
-    imgSrc: "/images/game-covers/re2.webp",
-    title: "Resident Evil 2",
-    releaseDate: /* @__PURE__ */ new Date("2022-04-01"),
-    fanRating: 9.5
+var import_mongoose = require("mongoose");
+const GameSchema = new import_mongoose.Schema(
+  {
+    imgSrc: { type: String, required: true, trim: true },
+    title: { type: String, required: true, trim: true },
+    releaseDate: { type: Date, required: true },
+    fanRating: { type: Number, required: true }
   },
-  re4: {
-    imgSrc: "/images/game-covers/re4.jpg",
-    title: "Resident Evil 4",
-    releaseDate: /* @__PURE__ */ new Date("2023-05-1"),
-    fanRating: 10
-  },
-  re0: {
-    imgSrc: "/images/game-covers/re0.jpg",
-    title: "Resident Evil 0",
-    releaseDate: /* @__PURE__ */ new Date("2000-09-10"),
-    fanRating: 6.8
-  }
-};
-function getGameCard(_) {
-  return gameCards["re2"];
+  { collection: "games" }
+);
+const GameModel = (0, import_mongoose.model)("Game", GameSchema);
+function index() {
+  return GameModel.find();
 }
-function getGameCards() {
-  const games_list = Object.entries(gameCards).map(([key, value]) => value);
-  return games_list;
+function get(userid) {
+  return GameModel.find({ userid }).then((list) => list[0]).catch((err) => {
+    throw `${userid} Not Found`;
+  });
 }
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  getGameCard,
-  getGameCards
-});
+var game_card_svc_default = { index, get };
