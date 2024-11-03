@@ -17,12 +17,32 @@ function index(): Promise<Game[]> {
   return GameModel.find();
 }
 
-function get(userid: String): Promise<Game> {
-  return GameModel.find({ userid })
+function get(_id: String): Promise<Game> {
+  return GameModel.find({ _id })
     .then((list) => list[0])
     .catch((err) => {
-      throw `${userid} Not Found`;
+      throw `${_id} Not Found`;
     });
 }
 
-export default { index, get };
+function create(json: Game): Promise<Game> {
+  const newGame = new GameModel(json);
+  return newGame.save();
+}
+
+function update(_id: String, game: Game): Promise<Game> {
+  return GameModel.findOneAndUpdate({ _id }, game, {
+    new: true,
+  }).then((updated) => {
+    if (!updated) throw `${_id} not updated`;
+    else return updated as Game;
+  });
+}
+
+function remove(_id: String): Promise<void> {
+  return GameModel.findOneAndDelete({ _id }).then((deleted) => {
+    if (!deleted) throw `${_id} not deleted`;
+  });
+}
+
+export default { index, get, create, update, remove };

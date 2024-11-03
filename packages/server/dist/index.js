@@ -25,11 +25,14 @@ var import_express = __toESM(require("express"));
 var import_games = require("./pages/games");
 var import_game_card_svc = __toESM(require("./services/game-card-svc"));
 var import_mongo = require("./services/mongo");
+var import_games2 = __toESM(require("./routes/games"));
 (0, import_mongo.connect)("Resident-Evil-Wiki-DB");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
 const staticDir = process.env.STATIC || "public";
 app.use(import_express.default.static(staticDir));
+app.use(import_express.default.json());
+app.use("/api/games", import_games2.default);
 app.get("/hello", (req, res) => {
   res.send("<h5>Hello world</h5>");
 });

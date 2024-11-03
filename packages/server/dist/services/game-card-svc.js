@@ -35,9 +35,26 @@ const GameModel = (0, import_mongoose.model)("Game", GameSchema);
 function index() {
   return GameModel.find();
 }
-function get(userid) {
-  return GameModel.find({ userid }).then((list) => list[0]).catch((err) => {
-    throw `${userid} Not Found`;
+function get(_id) {
+  return GameModel.find({ _id }).then((list) => list[0]).catch((err) => {
+    throw `${_id} Not Found`;
   });
 }
-var game_card_svc_default = { index, get };
+function create(json) {
+  const newGame = new GameModel(json);
+  return newGame.save();
+}
+function update(_id, game) {
+  return GameModel.findOneAndUpdate({ _id }, game, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${_id} not updated`;
+    else return updated;
+  });
+}
+function remove(_id) {
+  return GameModel.findOneAndDelete({ _id }).then((deleted) => {
+    if (!deleted) throw `${_id} not deleted`;
+  });
+}
+var game_card_svc_default = { index, get, create, update, remove };
