@@ -56,20 +56,11 @@ class GamesPage {
     });
   }
   renderGame(game) {
-    const { imgSrc, title, releaseDate, fanRating } = game;
-    return import_server.html`
-      <game-card>
-        <img slot="image" src=${imgSrc} />
-        <span slot="title">${title}</span>
-        <span slot="release-date">${releaseDate.toDateString()}</span>
-        <span slot="fan-rating">${fanRating}</span>
-      </game-card>
-    `;
+    return import_server.html` <game-card src="/api/games/${game["_id"]}"> </game-card> `;
   }
   renderBody() {
     const games_list = this.data;
     const gamesHTML = games_list ? import_server.html` ${games_list.map(this.renderGame)} ` : "";
-    console.log(gamesHTML);
     return import_server.html`
       <body>
         <header-element></header-element>

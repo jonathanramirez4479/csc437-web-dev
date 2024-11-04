@@ -12,19 +12,17 @@ router.get("/", (_, res: Response) => {
 
 router.get("/:_id", (req: Request, res: Response) => {
   const { _id } = req.params;
-  console.log("GET /:userid");
+  console.log("GET /:_id=", _id);
 
   Games.get(_id)
     .then((game: Game) => {
-      res.json(game), console.log(game);
+      res.json(game);
     })
     .catch((err) => res.status(404).send(err));
 });
 
 router.post("/", (req: Request, res: Response) => {
   const newGame = req.body;
-
-  console.log("\n\nPOST req.body: ", req.body);
 
   Games.create(newGame)
     .then((game: Game) => res.status(201).json(game))

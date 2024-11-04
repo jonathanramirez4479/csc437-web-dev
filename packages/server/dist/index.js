@@ -36,7 +36,7 @@ app.use("/api/games", import_games2.default);
 app.get("/hello", (req, res) => {
   res.send("<h5>Hello world</h5>");
 });
-app.get("/games/", (req, res) => {
+app.get("/games", (req, res) => {
   import_game_card_svc.default.index().then((data) => {
     const page = new import_games.GamesPage(data);
     res.set("Content-Type", "text/html").send(page.render());

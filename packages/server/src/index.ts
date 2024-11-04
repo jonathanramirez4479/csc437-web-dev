@@ -19,7 +19,7 @@ app.get("/hello", (req: Request, res: Response) => {
   res.send("<h5>Hello world</h5>");
 });
 
-app.get("/games/", (req: Request, res: Response) => {
+app.get("/games", (req: Request, res: Response) => {
   Games.index().then((data) => {
     const page = new GamesPage(data);
     res.set("Content-Type", "text/html").send(page.render());

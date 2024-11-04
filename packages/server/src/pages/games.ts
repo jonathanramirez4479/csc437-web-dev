@@ -28,15 +28,7 @@ export class GamesPage {
   }
 
   renderGame(game: Game) {
-    const { imgSrc, title, releaseDate, fanRating } = game;
-    return html`
-      <game-card>
-        <img slot="image" src=${imgSrc} />
-        <span slot="title">${title}</span>
-        <span slot="release-date">${releaseDate.toDateString()}</span>
-        <span slot="fan-rating">${fanRating}</span>
-      </game-card>
-    `;
+    return html` <game-card src="/api/games/${game["_id"]}"> </game-card> `;
   }
 
   renderBody() {
@@ -45,7 +37,6 @@ export class GamesPage {
       ? html` ${games_list.map(this.renderGame)} `
       : "";
 
-    console.log(gamesHTML);
     return html`
       <body>
         <header-element></header-element>

@@ -39,14 +39,13 @@ router.get("/", (_, res) => {
 });
 router.get("/:_id", (req, res) => {
   const { _id } = req.params;
-  console.log("GET /:userid");
+  console.log("GET /:_id=", _id);
   import_game_card_svc.default.get(_id).then((game) => {
-    res.json(game), console.log(game);
+    res.json(game);
   }).catch((err) => res.status(404).send(err));
 });
 router.post("/", (req, res) => {
   const newGame = req.body;
-  console.log("\n\nPOST req.body: ", req.body);
   import_game_card_svc.default.create(newGame).then((game) => res.status(201).json(game)).catch((err) => {
     res.status(500).send(err), console.log(err);
   });
