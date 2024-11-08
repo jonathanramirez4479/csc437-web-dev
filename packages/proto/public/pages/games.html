@@ -21,31 +21,18 @@
     <script type="module">
       import { define } from "@calpoly/mustang";
       import { GameCard } from "/scripts/game-card.js";
+      import { HeaderElement } from "/scripts/header-element.js";
 
       define({
         "game-card": GameCard,
+        "header-element": HeaderElement,
       });
+
+      HeaderElement.initializeOnce();
     </script>
   </head>
   <body>
-    <header>
-      <div id="primary-header">
-        <div class="title">
-          <h1>Resident Evil Wiki</h1>
-          <svg class="icon">
-            <use href="/icons/umbrella-corp.svg#icon-umbrella-corp" />
-          </svg>
-        </div>
-        <img class="profile-pic" src="/images/profile-pic.jpg" />
-      </div>
-      <div id="sub-header">
-        <h5><a href="../index.html">Home</a></h5>
-        <h5><a href="/pages/games.html">Games</a></h5>
-        <h5><a href="/pages/movies.html">Movies</a></h5>
-        <h5><a href="/pages/characters.html">Characters</a></h5>
-        <h5><a href="/pages/locations.html">Locations</a></h5>
-      </div>
-    </header>
+    <header-element></header-element>
     <main class="category-page">
       <game-card>
         <img slot="image" src="/images/game-covers/re2.webp" />
