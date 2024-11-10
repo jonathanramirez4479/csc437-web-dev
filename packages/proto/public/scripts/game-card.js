@@ -1,4 +1,4 @@
-import { html, shadow } from "@calpoly/mustang";
+import { html, Observer, shadow } from "@calpoly/mustang";
 import reset from "./styles/reset.css.js";
 import GridCardStyle from "./styles/grid-card.css.js";
 
@@ -58,5 +58,21 @@ export class GameCard extends HTMLElement {
     shadow(this)
       .template(GameCard.template)
       .styles(reset.styles, GameCard.styles);
+  }
+
+  _authObserver = new Observer(this, "blazing:auth");
+
+  get authorization() {
+    return (
+      this._user?.authenticated && {
+        Authorization: `Bearer ${this._user.token}`,
+      }
+    );
+  }
+
+  connectedCallback() {
+    this._authObserver.observe(({ user }) => {
+      this._user = user;
+    });
   }
 }

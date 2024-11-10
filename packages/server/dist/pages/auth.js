@@ -26,53 +26,50 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var games_exports = {};
-__export(games_exports, {
-  GamesPage: () => GamesPage
+var auth_exports = {};
+__export(auth_exports, {
+  LoginPage: () => LoginPage
 });
-module.exports = __toCommonJS(games_exports);
-var import_server = require("@calpoly/mustang/server");
+module.exports = __toCommonJS(auth_exports);
 var import_renderPage = __toESM(require("./renderPage"));
-class GamesPage {
-  data;
-  constructor(data) {
-    this.data = data;
-  }
+var import_server = require("@calpoly/mustang/server");
+class LoginPage {
   render() {
     return (0, import_renderPage.default)({
-      body: this.renderBody(),
-      stylesheets: [],
-      styles: [],
       scripts: [
         `
         import { define, Auth } from "@calpoly/mustang";
-        import { GameCard } from "/scripts/game-card.js";
-        
-        define ({
-          "game-card": GameCard,
-          "mu-auth": Auth.Provider
-        });
+        import { LoginForm } from "/scripts/login-form.js";
+
+        define({
+          "mu-auth": Auth.Provider,
+          "login-form": LoginForm
+        })
         `
-      ]
+      ],
+      styles: [],
+      body: import_server.html`
+        <body>
+          <mu-auth provides="blazing:auth">
+            <article>
+              <main class="page">
+                <login-form api="/auth/login">
+                  <h3 slot="title">Sign in and go places!</h3>
+                </login-form>
+                <p class="register">
+                  Or did you want to
+                  <a href="./register"> register as a new user </a>
+                  ?
+                </p>
+              </main>
+            </article>
+          </mu-auth>
+        </body>
+      `
     });
-  }
-  renderGame(game) {
-    return import_server.html` <game-card src="/api/games/${game["_id"]}"> </game-card> `;
-  }
-  renderBody() {
-    const games_list = this.data;
-    const gamesHTML = games_list ? import_server.html` ${games_list.map(this.renderGame)} ` : "";
-    return import_server.html`
-      <body>
-        <mu-auth provides="blazing:auth">
-          <header-element></header-element>
-          <main class="category-page">${gamesHTML}</main>
-        </mu-auth>
-      </body>
-    `;
   }
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  GamesPage
+  LoginPage
 });

@@ -16,11 +16,12 @@ export class GamesPage {
       styles: [],
       scripts: [
         `
-        import { define } from "@calpoly/mustang";
+        import { define, Auth } from "@calpoly/mustang";
         import { GameCard } from "/scripts/game-card.js";
         
         define ({
           "game-card": GameCard,
+          "mu-auth": Auth.Provider
         });
         `,
       ],
@@ -39,8 +40,10 @@ export class GamesPage {
 
     return html`
       <body>
-        <header-element></header-element>
-        <main class="category-page">${gamesHTML}</main>
+        <mu-auth provides="blazing:auth">
+          <header-element></header-element>
+          <main class="category-page">${gamesHTML}</main>
+        </mu-auth>
       </body>
     `;
   }

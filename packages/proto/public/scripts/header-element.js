@@ -1,4 +1,4 @@
-import { css, html, shadow, Events } from "@calpoly/mustang";
+import { css, html, shadow, Events, Observer } from "@calpoly/mustang";
 import reset from "./styles/reset.css.js";
 
 export class HeaderElement extends HTMLElement {
@@ -6,12 +6,22 @@ export class HeaderElement extends HTMLElement {
     <template>
       <header>
         <div id="primary-header">
+          <a slot="actuator">
+            Hello,
+            <span id="userid"></span>
+          </a>
           <div class="title">
             <h1>Resident Evil Wiki</h1>
             <svg class="icon">
               <use href="/icons/umbrella-corp.svg#icon-umbrella-corp" />
             </svg>
           </div>
+          <li class="when-signed-in">
+            <a id="signout">Sign Out</a>
+          </li>
+          <li class="when-signed-out">
+            <a href="/login">Sign In</a>
+          </li>
           <label class="dark-mode-switch">
             <input type="checkbox" autocomplete="off" />
             Dark mode
@@ -101,7 +111,33 @@ export class HeaderElement extends HTMLElement {
     header a:visited {
       color: inherit;
     }
+
+    a[slot="actuator"] {
+      color: var(--color-link-inverted);
+      cursor: pointer;
+    }
+    #userid:empty::before {
+      content: "traveler";
+    }
+    a:has(#userid:empty) > .when-signed-in,
+    a:has(#userid:not(:empty)) > .when-signed-out {
+      display: none;
+    }
   `;
+
+  get userid() {
+    return this._userid.textContent;
+  }
+
+  set userid(id) {
+    if (id === "anonymous") {
+      this._userid.textContent = "";
+      this._signout.disabled = true;
+    } else {
+      this._userid.textContent = id;
+      this._signout.disabled = false;
+    }
+  }
 
   constructor() {
     super();
@@ -116,6 +152,13 @@ export class HeaderElement extends HTMLElement {
         checked: event.target.checked,
       });
     });
+
+    this._userid = this.shadowRoot.querySelector("#userid");
+    this._signout = this.shadowRoot.querySelector("#signout");
+
+    this._signout.addEventListener("click", (event) =>
+      Events.relay(event, "auth:message", ["auth/signout"])
+    );
   }
 
   static initializeOnce() {
@@ -125,6 +168,16 @@ export class HeaderElement extends HTMLElement {
 
     document.body.addEventListener("dark-mode", (event) => {
       toggleDarkMode(event.currentTarget, event.detail.checked);
+    });
+  }
+
+  _authObserver = new Observer(this, "blazing:auth");
+
+  connectedCallback() {
+    this._authObserver.observe(({ user }) => {
+      if (user && user.username !== this.userid) {
+        this.userid = user.username;
+      }
     });
   }
 }
