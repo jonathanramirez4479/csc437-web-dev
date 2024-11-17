@@ -7,12 +7,8 @@ export class GameCard extends HTMLElement {
     return this.getAttribute("src");
   }
 
-  connectedCallback() {
-    if (this.src) this.hydrate(this.src);
-  }
-
   hydrate(url) {
-    fetch(url)
+    fetch(url, { headers: this.authorization })
       .then((res) => {
         if (res.status !== 200) throw `Status: ${res.status}`;
         return res.json();
@@ -60,7 +56,7 @@ export class GameCard extends HTMLElement {
       .styles(reset.styles, GameCard.styles);
   }
 
-  _authObserver = new Observer(this, "blazing:auth");
+  _authObserver = new Observer(this, "resident-evil:auth");
 
   get authorization() {
     return (
@@ -72,7 +68,9 @@ export class GameCard extends HTMLElement {
 
   connectedCallback() {
     this._authObserver.observe(({ user }) => {
+      console.log("Authenticated user: ", user);
       this._user = user;
+      if (this.src) this.hydrate(this.src);
     });
   }
 }

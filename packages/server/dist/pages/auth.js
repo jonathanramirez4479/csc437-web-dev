@@ -50,7 +50,7 @@ class LoginPage {
       styles: [],
       body: import_server.html`
         <body>
-          <mu-auth provides="blazing:auth">
+          <mu-auth provides="resident-evil:auth">
             <article>
               <main class="page">
                 <login-form api="/auth/login">

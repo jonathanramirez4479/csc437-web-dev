@@ -64,7 +64,7 @@ class GamesPage {
     const gamesHTML = games_list ? import_server.html` ${games_list.map(this.renderGame)} ` : "";
     return import_server.html`
       <body>
-        <mu-auth provides="blazing:auth">
+        <mu-auth provides="resident-evil:auth">
           <header-element></header-element>
           <main class="category-page">${gamesHTML}</main>
         </mu-auth>

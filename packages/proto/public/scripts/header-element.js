@@ -1,7 +1,19 @@
-import { css, html, shadow, Events, Observer } from "@calpoly/mustang";
+import {
+  css,
+  html,
+  define,
+  shadow,
+  Events,
+  Observer,
+  Dropdown,
+} from "@calpoly/mustang";
 import reset from "./styles/reset.css.js";
 
 export class HeaderElement extends HTMLElement {
+  static uses = define({
+    "mu-dropdown": Dropdown.Element,
+  });
+
   static template = html`
     <template>
       <header>
@@ -16,16 +28,22 @@ export class HeaderElement extends HTMLElement {
               <use href="/icons/umbrella-corp.svg#icon-umbrella-corp" />
             </svg>
           </div>
-          <li class="when-signed-in">
-            <a id="signout">Sign Out</a>
-          </li>
-          <li class="when-signed-out">
-            <a href="/login">Sign In</a>
-          </li>
-          <label class="dark-mode-switch">
-            <input type="checkbox" autocomplete="off" />
-            Dark mode
-          </label>
+          <mu-dropdown>
+            <menu>
+              <li>
+                <label class="dark-mode-switch">
+                  <input type="checkbox" autocomplete="off" />
+                  Dark mode
+                </label>
+              </li>
+              <li class="when-signed-in">
+                <a id="signout">Sign Out</a>
+              </li>
+              <li class="when-signed-out">
+                <a href="/login">Sign In</a>
+              </li>
+            </menu>
+          </mu-dropdown>
           <img class="profile-pic" src="/images/profile-pic.jpg" />
         </div>
         <div id="sub-header">
@@ -112,15 +130,26 @@ export class HeaderElement extends HTMLElement {
       color: inherit;
     }
 
+    nav {
+      display: flex;
+      flex-direction: column;
+      flex-basis: max-content;
+      align-items: end;
+    }
     a[slot="actuator"] {
       color: var(--color-link-inverted);
       cursor: pointer;
     }
     #userid:empty::before {
-      content: "traveler";
+      content: "user";
     }
-    a:has(#userid:empty) > .when-signed-in,
-    a:has(#userid:not(:empty)) > .when-signed-out {
+    menu a {
+      color: var(--color-link);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    a:has(#userid:empty) ~ menu > .when-signed-in,
+    a:has(#userid:not(:empty)) ~ menu > .when-signed-out {
       display: none;
     }
   `;
@@ -161,6 +190,24 @@ export class HeaderElement extends HTMLElement {
     );
   }
 
+  _authObserver = new Observer(this, "resident-evil:auth");
+
+  get authorization() {
+    return (
+      this._user?.authenticated && {
+        Authorization: `Bearer ${this._user.token}`,
+      }
+    );
+  }
+
+  connectedCallback() {
+    this._authObserver.observe(({ user }) => {
+      if (user && user.username !== this.userid) {
+        this.userid = user.username;
+      }
+    });
+  }
+
   static initializeOnce() {
     function toggleDarkMode(page, checked) {
       page.classList.toggle("dark-mode", checked);
@@ -168,16 +215,6 @@ export class HeaderElement extends HTMLElement {
 
     document.body.addEventListener("dark-mode", (event) => {
       toggleDarkMode(event.currentTarget, event.detail.checked);
-    });
-  }
-
-  _authObserver = new Observer(this, "blazing:auth");
-
-  connectedCallback() {
-    this._authObserver.observe(({ user }) => {
-      if (user && user.username !== this.userid) {
-        this.userid = user.username;
-      }
     });
   }
 }

@@ -40,7 +40,7 @@ export class GamesPage {
 
     return html`
       <body>
-        <mu-auth provides="blazing:auth">
+        <mu-auth provides="resident-evil:auth">
           <header-element></header-element>
           <main class="category-page">${gamesHTML}</main>
         </mu-auth>
