@@ -29,7 +29,9 @@ export class GamesPage {
   }
 
   renderGame(game: Game) {
-    return html` <game-card src="/api/games/${game["_id"]}"> </game-card> `;
+    return html`
+      <game-card mode="view" src="/api/games/${game["_id"]}"> </game-card>
+    `;
   }
 
   renderBody() {

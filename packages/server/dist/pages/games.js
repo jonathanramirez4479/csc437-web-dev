@@ -57,7 +57,9 @@ class GamesPage {
     });
   }
   renderGame(game) {
-    return import_server.html` <game-card src="/api/games/${game["_id"]}"> </game-card> `;
+    return import_server.html`
+      <game-card mode="view" src="/api/games/${game["_id"]}"> </game-card>
+    `;
   }
   renderBody() {
     const games_list = this.data;

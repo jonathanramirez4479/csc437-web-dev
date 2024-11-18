@@ -1,7 +1,7 @@
 import { css } from "@calpoly/mustang";
 
 const GridCardStyle = css`
-  div {
+  .view {
     margin-top: var(--margin-top-grid-item);
     flex: 1;
     justify-items: center;
@@ -19,12 +19,12 @@ const GridCardStyle = css`
     border-radius: inherit;
   }
 
-  div:hover > ::slotted(img[slot="image"]) {
+  .view:hover > ::slotted(img[slot="image"]) {
     opacity: var(--opacity-card-hover);
     transition: opacity 0.3s;
   }
 
-  div > div {
+  .view > div {
     position: absolute; /* Position overlay over the image */
     bottom: 0; /* Align to the top */
     left: 0; /* Align to the left */
@@ -41,10 +41,18 @@ const GridCardStyle = css`
     border-top-right-radius: 0%;
   }
 
-  div:hover > div {
+  .view:hover > div {
     opacity: 1; /* Show overlay on hover */
     border-top-left-radius: 0%;
     border-top-right-radius: 0%;
+  }
+
+  [mode="edit"] mu-form.edit {
+    display: block;
+  }
+
+  [mode="view"] mu-form.edit {
+    display: none; !important;
   }
 `;
 
