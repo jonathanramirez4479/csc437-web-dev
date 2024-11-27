@@ -47,8 +47,8 @@ export class HeaderElement extends HTMLElement {
           <img class="profile-pic" src="/images/profile-pic.jpg" />
         </div>
         <div id="sub-header">
-          <h5><a href="../index.html">Home</a></h5>
-          <h5><a href="/pages/games.html">Games</a></h5>
+          <h5><a href="/pages/home.html">Home</a></h5>
+          <h5><a href="/games">Games</a></h5>
           <h5><a href="/pages/movies.html">Movies</a></h5>
           <h5><a href="/pages/characters.html">Characters</a></h5>
           <h5><a href="/pages/locations.html">Locations</a></h5>

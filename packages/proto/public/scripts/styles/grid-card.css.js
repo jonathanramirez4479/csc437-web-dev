@@ -2,6 +2,7 @@ import { css } from "@calpoly/mustang";
 
 const GridCardStyle = css`
   .view {
+    position: relative;
     margin-top: var(--margin-top-grid-item);
     flex: 1;
     justify-items: center;
@@ -10,21 +11,23 @@ const GridCardStyle = css`
     border-radius: var(--border-radius-grid-item);
     position: relative; /* Add this to position overlay */
     overflow: hidden;
-    position: relative;
+    border: solid 0.5rem blue;
   }
 
-  ::slotted(img[slot="image"]) {
+  .view > ::slotted([slot="imgSrc"]) {
+    position: absolute;
     width: 100%;
     height: 100%;
     border-radius: inherit;
+    border: inherit;
   }
 
-  .view:hover > ::slotted(img[slot="image"]) {
+  .view:hover > ::slotted([slot="imgSrc"]) {
     opacity: var(--opacity-card-hover);
-    transition: opacity 0.3s;
+    transition: opacity var(--grid-card-overlay-transition);
   }
 
-  .view > div {
+  .view > .overlay {
     position: absolute; /* Position overlay over the image */
     bottom: 0; /* Align to the top */
     left: 0; /* Align to the left */
@@ -35,24 +38,17 @@ const GridCardStyle = css`
     align-items: center; /* Vertically center text */
     justify-content: center; /* Horizontally center text */
     opacity: 0; /* Hide overlay initially */
-    transition: opacity 0.3s; /* Smooth opacity transition */
+    transition: opacity var(--grid-card-overlay-transition); /* Smooth opacity transition */
     background-color: white;
     border-top-left-radius: 0%;
     border-top-right-radius: 0%;
   }
 
-  .view:hover > div {
+  .view:hover > .overlay {
     opacity: 1; /* Show overlay on hover */
+    transition: var(--grid-card-overlay-transition);
     border-top-left-radius: 0%;
     border-top-right-radius: 0%;
-  }
-
-  [mode="edit"] mu-form.edit {
-    display: block;
-  }
-
-  [mode="view"] mu-form.edit {
-    display: none; !important;
   }
 `;
 

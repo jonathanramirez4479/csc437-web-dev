@@ -2,17 +2,16 @@ import { html, shadow } from "@calpoly/mustang";
 import reset from "./styles/reset.css.js";
 import GridCardStyle from "./styles/grid-card.css.js";
 
-export class CharacterCard extends HTMLElement {
+export class CharacterCardElement extends HTMLElement {
   static template = html`
     <template>
-      <div>
-        <slot name="image">
+      <div class="view">
+        <slot name="imgSrc">
           <img src="/images/No_Image_Available.jpg" />
         </slot>
-        <div>
-          <p><slot name="name">Character Name</slot></p>
-          <p><slot name="character-type">Character Type</slot></p>
-          <p><slot name="fan-rating">0/5</slot></p>
+        <div class="overlay">
+          <p><slot name="name">Name</slot></p>
+          <p><slot name="fan-rating">Fan Rating</slot></p>
         </div>
       </div>
     </template>
@@ -23,7 +22,7 @@ export class CharacterCard extends HTMLElement {
   constructor() {
     super();
     shadow(this)
-      .template(CharacterCard.template)
-      .styles(reset.styles, CharacterCard.styles);
+      .template(CharacterCardElement.template)
+      .styles(reset.styles, CharacterCardElement.styles);
   }
 }

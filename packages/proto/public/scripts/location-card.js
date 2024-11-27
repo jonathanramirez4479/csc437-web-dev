@@ -2,17 +2,17 @@ import { html, shadow } from "@calpoly/mustang";
 import reset from "./styles/reset.css.js";
 import GridCardStyle from "./styles/grid-card.css.js";
 
-export class LocationCard extends HTMLElement {
+export class LocationCardElement extends HTMLElement {
   static template = html`
     <template>
-      <div>
-        <slot name="image">
+      <div class="view">
+        <slot name="imgSrc">
           <img src="/images/No_Image_Available.jpg" />
         </slot>
-        <div>
-          <p><slot name="name">null</slot></p>
-          <p><slot name="first-shown-in">null</slot></p>
-          <p><slot name="fan-rating">0/5</slot></p>
+        <div class="overlay">
+          <p><slot name="name">Location Name</slot></p>
+          <p><slot name="source">Resident Evil Movie/Game</slot></p>
+          <p><slot name="fan-rating">Fan Rating:</slot></p>
         </div>
       </div>
     </template>
@@ -23,7 +23,7 @@ export class LocationCard extends HTMLElement {
   constructor() {
     super();
     shadow(this)
-      .template(LocationCard.template)
-      .styles(reset.styles, LocationCard.styles);
+      .template(LocationCardElement.template)
+      .styles(reset.styles, LocationCardElement.styles);
   }
 }

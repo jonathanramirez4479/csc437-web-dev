@@ -20,12 +20,12 @@
     </script>
     <script type="module">
       import { define } from "@calpoly/mustang";
-      import { MovieCard } from "/scripts/movie-card.js";
       import { HeaderElement } from "/scripts/header-element.js";
+      import { MovieCardElement } from "/scripts/movie-card.js";
 
       define({
-        "movie-card": MovieCard,
         "header-element": HeaderElement,
+        "movie-card": MovieCardElement,
       });
 
       HeaderElement.initializeOnce();
@@ -35,25 +35,40 @@
     <header-element></header-element>
     <main class="category-page">
       <movie-card>
-        <img
-          slot="image"
-          src="/images/movie-covers/resident-evil-apocalypse.jpg"
-        />
-        <span slot="title">Resident Evil: Apocalypse</span>
-        <span slot="release-date">2004</span>
-        <span slot="imdb-rating">3/5</span>
-      </movie-card>
-      <movie-card>
-        <img slot="image" src="/images/movie-covers/re-retribution.jpg" />
-        <span slot="title">Resident Evil: Retribution</span>
-        <span slot="release-date">2012</span>
-        <span slot="imdb-rating">2/5</span>
-      </movie-card>
-      <movie-card>
-        <img slot="image" src="/images/movie-covers/re.jpg" />
+        <img slot="imgSrc" src="/images/movie-covers/re.jpg" />
         <span slot="title">Resident Evil</span>
-        <span slot="release-date">2002</span>
-        <span slot="imdb-rating">4/5</span>
+        <span slot="releaseYear">2002</span>
+        <span slot="rating">IMDb Rating: 6.6/10</span>
+      </movie-card>
+      <movie-card>
+        <img slot="imgSrc" src="/images/movie-covers/re-apocalypse.jpg" />
+        <span slot="title">Resident Evil: Apocalypse</span>
+        <span slot="releaseYear">2004</span>
+        <span slot="rating">IMDb Rating: 6.1/10</span>
+      </movie-card>
+      <movie-card>
+        <img slot="imgSrc" src="/images/movie-covers/re-extinction.jpeg" />
+        <span slot="title">Resident Evil: Extinction</span>
+        <span slot="releaseYear">2007</span>
+        <span slot="rating">IMDb Rating: 6.2/10</span>
+      </movie-card>
+      <movie-card>
+        <img slot="imgSrc" src="/images/movie-covers/re-retribution.jpg" />
+        <span slot="title">Resident Evil: Retribution</span>
+        <span slot="releaseYear">2012</span>
+        <span slot="rating">IMDb Rating: 5.3/10</span>
+      </movie-card>
+      <movie-card>
+        <img slot="imgSrc" src="/images/movie-covers/re-death-island.png" />
+        <span slot="title">Resident Evil: Death Island</span>
+        <span slot="releaseYear">2023</span>
+        <span slot="rating">IMDb Rating: 5.7/10</span>
+      </movie-card>
+      <movie-card>
+        <img slot="imgSrc" src="/images/movie-covers/re-vendetta.webp" />
+        <span slot="title">Resident Evil: Vendetta</span>
+        <span slot="releaseYear">2017</span>
+        <span slot="rating">IMDb Rating: 6.2/10</span>
       </movie-card>
     </main>
   </body>

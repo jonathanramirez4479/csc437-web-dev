@@ -20,12 +20,12 @@
     </script>
     <script type="module">
       import { define } from "@calpoly/mustang";
-      import { CharacterCard } from "/scripts/character-card.js";
       import { HeaderElement } from "/scripts/header-element.js";
+      import { CharacterCardElement } from "/scripts/character-card.js";
 
       define({
-        "character-card": CharacterCard,
         "header-element": HeaderElement,
+        "character-card": CharacterCardElement,
       });
 
       HeaderElement.initializeOnce();
@@ -35,25 +35,38 @@
     <header-element></header-element>
     <main class="category-page">
       <character-card>
-        <img slot="image" src="/images/character-portraits/wesker.jpg" />
-        <span slot="name">Albert Wesker</span>
-        <span slot="character-type">Villain</span>
-        <span slot="fan-rating">5/5</span>
-      </character-card>
-      <character-card>
-        <img slot="image" src="/images/character-portraits/nemesis.webp" />
-        <span slot="name">Nemesis</span>
-        <span slot="character-type">Villain</span>
-        <span slot="fan-rating">4.5/5</span>
-      </character-card>
-      <character-card>
         <img
-          slot="image"
+          slot="imgSrc"
           src="/images/character-portraits/chris-redfield.jpg"
         />
         <span slot="name">Chris Redfield</span>
-        <span slot="character-type">Hero</span>
-        <span slot="fan-rating">5/5</span>
+        <span slot="fan-rating">Fan Rating:</span>
+      </character-card>
+      <character-card>
+        <img
+          slot="imgSrc"
+          src="/images/character-portraits/claire-redfield.webp"
+        />
+        <span slot="name">Claire Redfield</span>
+        <span slot="fan-rating">Fan Rating:</span>
+      </character-card>
+      <character-card>
+        <img
+          slot="imgSrc"
+          src="/images/character-portraits/leon-kennedy.webp"
+        />
+        <span slot="name">Leon Kennedy</span>
+        <span slot="fan-rating">Fan Rating:</span>
+      </character-card>
+      <character-card>
+        <img slot="imgSrc" src="/images/character-portraits/nemesis.webp" />
+        <span slot="name">Albert Wesker</span>
+        <span slot="fan-rating">Fan Rating:</span>
+      </character-card>
+      <character-card>
+        <img slot="imgSrc" src="/images/character-portraits/wesker.jpg" />
+        <span slot="name">Nemesis</span>
+        <span slot="fan-rating">Fan Rating:</span>
       </character-card>
     </main>
   </body>

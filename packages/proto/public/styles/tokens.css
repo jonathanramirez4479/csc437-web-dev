@@ -41,6 +41,7 @@
   --height-grid-item-overlay: 50%;
 
   --opacity-card-hover: 0.5;
+  --grid-card-overlay-transition: 0.3s;
 }
 
 body.dark-mode {
