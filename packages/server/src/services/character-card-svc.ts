@@ -1,29 +1,28 @@
 import { Character } from "models/character";
+import { Schema, model } from "mongoose";
 
-const characters = {
-  chrisRedfield: {
-    name: "Chris Redfield",
-    imgSrc: "/images/character-portraits/chris-redfield.jpg",
-    fanRating: 9.5,
+const CharacterSchema = new Schema<Character>(
+  {
+    characterId: { type: String, required: true, trim: true },
+    name: { type: String, required: true, trim: true },
+    imgSrc: { type: String, required: true, trim: true },
+    fanRating: { type: Number, required: true },
   },
-  claireRedfield: {
-    name: "Claire Redfield",
-    imgSrc: "/images/character-portraits/claire-redfield.webp",
-    fanRating: 10,
-  },
-  leonKennedy: {
-    name: "Leon Kennedy",
-    imgSrc: "/images/character-portraits/leon-kennedy.webp",
-    fanRating: 9.8,
-  },
-  albertWesker: {
-    name: "Albert Wesker",
-    imgSrc: "/images/character-portraits/wesker.jpg",
-    fanRating: 7.5,
-  },
-};
+  { collection: "characters" }
+);
 
-export function getCharacters() {
-  const characterList = Object.entries(characters).map(([key, value]) => value);
-  return characterList;
+const CharacterModel = model<Character>("Character", CharacterSchema);
+
+function index(): Promise<Character[]> {
+  return CharacterModel.find();
 }
+
+function get(characterId: String): Promise<Character> {
+  return CharacterModel.find({ characterId })
+    .then((list) => list[0])
+    .catch((err) => {
+      throw `${characterId} Not Found`;
+    });
+}
+
+export default { index, get };

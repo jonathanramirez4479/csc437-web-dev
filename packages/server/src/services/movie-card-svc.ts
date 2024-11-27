@@ -1,33 +1,29 @@
 import { Movie } from "models/movie";
+import { Schema, model } from "mongoose";
 
-const movies = {
-  residentEvil: {
-    title: "Resident Evil",
-    imgSrc: "/images/movie-covers/re.jpg",
-    releaseDate: new Date("2002-01-01"),
-    imdbRating: 6.6,
+const MovieSchema = new Schema<Movie>(
+  {
+    movieCode: { type: String, required: true, trim: true },
+    title: { type: String, required: true, trim: true },
+    imgSrc: { type: String, required: true, trim: true },
+    releaseDate: { type: Date, required: true },
+    imdbRating: { type: Number, required: true },
   },
-  residentEvilApoc: {
-    title: "Resident Evil: Apocalypse",
-    imgSrc: "/images/movie-covers/re-apocalypse.jpg",
-    releaseDate: new Date("2004-01-02"),
-    imdbRating: 6.1,
-  },
-  residentEvilExt: {
-    title: "Resident Evil: Extinction",
-    imgSrc: "/images/movie-covers/re-extinction.jpeg",
-    releaseDate: new Date("2007-02-02"),
-    imdbRating: 6.2,
-  },
-  residentEvilRet: {
-    title: "Resident Evil: Retribution",
-    imgSrc: "/images/movie-covers/re-retribution.jpg",
-    releaseDate: new Date("2012-03-02"),
-    imdbRating: 5.3,
-  },
-};
+  { collection: "movies" }
+);
 
-export function getMovies() {
-  const movieList = Object.entries(movies).map(([key, value]) => value);
-  return movieList;
+const MovieModel = model<Movie>("Movie", MovieSchema);
+
+function index(): Promise<Movie[]> {
+  return MovieModel.find();
 }
+
+function get(movieCode: String): Promise<Movie> {
+  return MovieModel.find({ movieCode })
+    .then((list) => list[0])
+    .catch((error) => {
+      throw `${movieCode} Not Found`;
+    });
+}
+
+export default { index, get };

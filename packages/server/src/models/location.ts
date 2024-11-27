@@ -1,6 +1,7 @@
 export interface Location {
+  locationId: string;
   name: string;
   imgSrc: string;
-  appearsIn: string[];
+  appearsIn: [string];
   fanRating: number;
 }

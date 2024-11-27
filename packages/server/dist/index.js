@@ -22,18 +22,18 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var import_express = __toESM(require("express"));
-var import_games = require("./pages/games");
-var import_game_card_svc = __toESM(require("./services/game-card-svc"));
 var import_mongo = require("./services/mongo");
-var import_games2 = __toESM(require("./routes/games"));
 var import_auth = __toESM(require("./routes/auth"));
 var import_auth2 = require("./pages/auth");
+var import_games = require("./pages/games");
+var import_game_card_svc = __toESM(require("./services/game-card-svc"));
+var import_games2 = __toESM(require("./routes/games"));
 var import_movies = require("./pages/movies");
-var import_movie_card_svc = require("./services/movie-card-svc");
+var import_movie_card_svc = __toESM(require("./services/movie-card-svc"));
 var import_characters = require("./pages/characters");
-var import_character_card_svc = require("./services/character-card-svc");
+var import_character_card_svc = __toESM(require("./services/character-card-svc"));
 var import_locations = require("./pages/locations");
-var import_location_card_svc = require("./services/location-card-svc");
+var import_location_card_svc = __toESM(require("./services/location-card-svc"));
 (0, import_mongo.connect)("Resident-Evil-Wiki-DB");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
@@ -52,20 +52,22 @@ app.get("/games", (req, res) => {
   });
 });
 app.get("/movies", (req, res) => {
-  const movies = (0, import_movie_card_svc.getMovies)();
-  const page = new import_movies.MoviesPage(movies);
-  res.set("Content-Type", "text/html").send(page.render());
+  import_movie_card_svc.default.index().then((data) => {
+    const page = new import_movies.MoviesPage(data);
+    res.set("Content-Type", "text/html").send(page.render());
+  });
 });
 app.get("/characters", (req, res) => {
-  const characters = (0, import_character_card_svc.getCharacters)();
-  const page = new import_characters.CharactersPage(characters);
-  res.set("Content-Type", "text/html").send(page.render());
-  ``;
+  import_character_card_svc.default.index().then((data) => {
+    const page = new import_characters.CharactersPage(data);
+    res.set("Content-Type", "text/html").send(page.render());
+  });
 });
 app.get("/locations", (req, res) => {
-  const locations = (0, import_location_card_svc.getLocations)();
-  const page = new import_locations.LocationsPage(locations);
-  res.set("Content-Type", "text/html").send(page.render());
+  import_location_card_svc.default.index().then((data) => {
+    const page = new import_locations.LocationsPage(data);
+    res.set("Content-Type", "text/html").send(page.render());
+  });
 });
 app.get("/login", (req, res) => {
   const page = new import_auth2.LoginPage();

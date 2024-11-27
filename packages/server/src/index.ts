@@ -1,17 +1,21 @@
-import { html } from "@calpoly/mustang";
 import express, { Request, Response } from "express";
-import { GamesPage } from "./pages/games";
-import Games from "./services/game-card-svc";
 import { connect } from "./services/mongo";
-import games from "./routes/games";
+
 import auth, { authenticateUser } from "./routes/auth";
 import { LoginPage } from "./pages/auth";
+
+import { GamesPage } from "./pages/games";
+import Games from "./services/game-card-svc";
+import games from "./routes/games";
+
 import { MoviesPage } from "./pages/movies";
-import { getMovies } from "./services/movie-card-svc";
+import Movies from "./services/movie-card-svc";
+
 import { CharactersPage } from "./pages/characters";
-import { getCharacters } from "./services/character-card-svc";
+import Characters from "./services/character-card-svc";
+
 import { LocationsPage } from "./pages/locations";
-import { getLocations } from "./services/location-card-svc";
+import Locations from "./services/location-card-svc";
 
 connect("Resident-Evil-Wiki-DB");
 
@@ -36,22 +40,24 @@ app.get("/games", (req: Request, res: Response) => {
 });
 
 app.get("/movies", (req: Request, res: Response) => {
-  const movies = getMovies();
-  const page = new MoviesPage(movies);
-  res.set("Content-Type", "text/html").send(page.render());
+  Movies.index().then((data) => {
+    const page = new MoviesPage(data);
+    res.set("Content-Type", "text/html").send(page.render());
+  });
 });
 
 app.get("/characters", (req: Request, res: Response) => {
-  const characters = getCharacters();
-  const page = new CharactersPage(characters);
-  res.set("Content-Type", "text/html").send(page.render());
-  ``;
+  Characters.index().then((data) => {
+    const page = new CharactersPage(data);
+    res.set("Content-Type", "text/html").send(page.render());
+  });
 });
 
 app.get("/locations", (req: Request, res: Response) => {
-  const locations = getLocations();
-  const page = new LocationsPage(locations);
-  res.set("Content-Type", "text/html").send(page.render());
+  Locations.index().then((data) => {
+    const page = new LocationsPage(data);
+    res.set("Content-Type", "text/html").send(page.render());
+  });
 });
 
 app.get("/login", (req: Request, res: Response) => {

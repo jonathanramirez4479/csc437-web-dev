@@ -18,40 +18,27 @@ var __copyProps = (to, from, except, desc) => {
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 var movie_card_svc_exports = {};
 __export(movie_card_svc_exports, {
-  getMovies: () => getMovies
+  default: () => movie_card_svc_default
 });
 module.exports = __toCommonJS(movie_card_svc_exports);
-const movies = {
-  residentEvil: {
-    title: "Resident Evil",
-    imgSrc: "/images/movie-covers/re.jpg",
-    releaseDate: /* @__PURE__ */ new Date("2002-01-01"),
-    imdbRating: 6.6
+var import_mongoose = require("mongoose");
+const MovieSchema = new import_mongoose.Schema(
+  {
+    movieCode: { type: String, required: true, trim: true },
+    title: { type: String, required: true, trim: true },
+    imgSrc: { type: String, required: true, trim: true },
+    releaseDate: { type: Date, required: true },
+    imdbRating: { type: Number, required: true }
   },
-  residentEvilApoc: {
-    title: "Resident Evil: Apocalypse",
-    imgSrc: "/images/movie-covers/re-apocalypse.jpg",
-    releaseDate: /* @__PURE__ */ new Date("2004-01-02"),
-    imdbRating: 6.1
-  },
-  residentEvilExt: {
-    title: "Resident Evil: Extinction",
-    imgSrc: "/images/movie-covers/re-extinction.jpeg",
-    releaseDate: /* @__PURE__ */ new Date("2007-02-02"),
-    imdbRating: 6.2
-  },
-  residentEvilRet: {
-    title: "Resident Evil: Retribution",
-    imgSrc: "/images/movie-covers/re-retribution.jpg",
-    releaseDate: /* @__PURE__ */ new Date("2012-03-02"),
-    imdbRating: 5.3
-  }
-};
-function getMovies() {
-  const movieList = Object.entries(movies).map(([key, value]) => value);
-  return movieList;
+  { collection: "movies" }
+);
+const MovieModel = (0, import_mongoose.model)("Movie", MovieSchema);
+function index() {
+  return MovieModel.find();
 }
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  getMovies
-});
+function get(movieCode) {
+  return MovieModel.find({ movieCode }).then((list) => list[0]).catch((error) => {
+    throw `${movieCode} Not Found`;
+  });
+}
+var movie_card_svc_default = { index, get };
