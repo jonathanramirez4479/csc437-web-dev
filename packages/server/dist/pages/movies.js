@@ -58,15 +58,8 @@ class MoviesPage {
     });
   }
   renderMovie(movie) {
-    const { title, imgSrc, releaseDate, imdbRating } = movie;
-    return import_server.html`
-      <movie-card>
-        <img slot="imgSrc" src=${imgSrc} />
-        <span slot="title">${title}</span>
-        <span slot="releaseYear">${releaseDate.getFullYear()}</span>
-        <span slot="rating">IMDb Rating: ${imdbRating}/10</span>
-      </movie-card>
-    `;
+    const { movieCode, title, imgSrc, releaseDate, imdbRating } = movie;
+    return import_server.html` <movie-card src="/api/movies/${movieCode}"></movie-card> `;
   }
   renderBody() {
     const movies = this.data;

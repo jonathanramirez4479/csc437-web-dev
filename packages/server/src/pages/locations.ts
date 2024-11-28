@@ -16,29 +16,29 @@ export class LocationsPage {
       styles: [],
       scripts: [
         `
-                import { define } from "@calpoly/mustang";
-                import { HeaderElement } from "/scripts/header-element.js";
-                import { LocationCardElement } from "/scripts/location-card.js";
+        import { define } from "@calpoly/mustang";
+        import { HeaderElement } from "/scripts/header-element.js";
+        import { LocationCardElement } from "/scripts/location-card.js";
 
-                define({
-                    "header-element": HeaderElement,
-                    "location-card": LocationCardElement,
-                });
-                `,
+        define({
+            "header-element": HeaderElement,
+            "location-card": LocationCardElement,
+        });
+        `,
       ],
     });
   }
 
   renderLocation(location: Location) {
-    const { name, imgSrc, appearsIn, fanRating } = location;
+    const { locationId, name, imgSrc, appearsIn, fanRating } = location;
     const appearsInVal = appearsIn?.at(0) || "";
 
     return html`
-      <location-card>
-        <img slot="imgSrc" src=${imgSrc} />
+      <location-card src="/api/locations/${locationId}">
+        <!-- <img slot="imgSrc" src=${imgSrc} />
         <span slot="name">${name}</span>
         <span slot="source">(${appearsInVal})</span>
-        <span slot="fan-rating">${fanRating}</span>
+        <span slot="fanRating">${fanRating}</span> -->
       </location-card>
     `;
   }

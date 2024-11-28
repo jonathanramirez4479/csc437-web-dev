@@ -30,12 +30,12 @@ export class CharactersPage {
   }
 
   renderCharacter(character: Character) {
-    const { name, imgSrc, fanRating } = character;
+    const { characterId, name, imgSrc, fanRating } = character;
     return html`
-      <character-card>
-        <img slot="imgSrc" src=${imgSrc} />
+      <character-card src="/api/characters/${characterId}">
+        <!-- <img slot="imgSrc" src=${imgSrc} />
         <span slot="name">${name}</span>
-        <span slot="fan-rating">Fan Rating: ${fanRating}/10</span>
+        <span slot="fan-rating">Fan Rating: ${fanRating}/10</span> -->
       </character-card>
     `;
   }
