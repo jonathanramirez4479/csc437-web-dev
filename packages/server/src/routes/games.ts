@@ -45,7 +45,7 @@ router.delete("/:_id", (req: Request, res: Response) => {
 
   Games.remove(_id)
     .then(() => res.status(204).end())
-    .catch((err) => res.status(404).end());
+    .catch((err) => res.status(404).send(err));
 });
 
 export default router;

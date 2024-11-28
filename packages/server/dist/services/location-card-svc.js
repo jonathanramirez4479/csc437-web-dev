@@ -45,4 +45,21 @@ function get(locationId) {
     throw `${locationId} Not Found`;
   });
 }
-var location_card_svc_default = { index, get };
+function create(json) {
+  const newLocation = new LocationModel(json);
+  return newLocation.save();
+}
+function update(locationId, location) {
+  return LocationModel.findOneAndUpdate({ locationId }, location, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${locationId} not updated`;
+    else return updated;
+  });
+}
+function remove(locationId) {
+  return LocationModel.findOneAndDelete({ locationId }).then((deleted) => {
+    if (!deleted) throw `${locationId} not deleted`;
+  });
+}
+var location_card_svc_default = { index, get, create, update, remove };

@@ -41,4 +41,21 @@ function get(movieCode) {
     throw `${movieCode} Not Found`;
   });
 }
-var movie_card_svc_default = { index, get };
+function create(json) {
+  const newMovie = new MovieModel(json);
+  return newMovie.save();
+}
+function update(movieCode, movie) {
+  return MovieModel.findOneAndUpdate({ movieCode }, movie, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${movieCode} not updated`;
+    else return updated;
+  });
+}
+function remove(movieCode) {
+  return MovieModel.findOneAndDelete({ movieCode }).then((deleted) => {
+    if (!deleted) throw `${movieCode} not deleted`;
+  });
+}
+var movie_card_svc_default = { index, get, create, update, remove };

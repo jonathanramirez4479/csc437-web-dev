@@ -26,4 +26,24 @@ function get(movieCode: String): Promise<Movie> {
     });
 }
 
-export default { index, get };
+function create(json: Movie): Promise<Movie> {
+  const newMovie = new MovieModel(json);
+  return newMovie.save();
+}
+
+function update(movieCode: String, movie: Movie): Promise<Movie> {
+  return MovieModel.findOneAndUpdate({ movieCode }, movie, {
+    new: true,
+  }).then((updated) => {
+    if (!updated) throw `${movieCode} not updated`;
+    else return updated as Movie;
+  });
+}
+
+function remove(movieCode: String): Promise<void> {
+  return MovieModel.findOneAndDelete({ movieCode }).then((deleted) => {
+    if (!deleted) throw `${movieCode} not deleted`;
+  });
+}
+
+export default { index, get, create, update, remove };

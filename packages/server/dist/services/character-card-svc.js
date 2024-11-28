@@ -40,4 +40,21 @@ function get(characterId) {
     throw `${characterId} Not Found`;
   });
 }
-var character_card_svc_default = { index, get };
+function create(json) {
+  const newCharacter = new CharacterModel(json);
+  return newCharacter.save();
+}
+function update(characterId, character) {
+  return CharacterModel.findOneAndUpdate({ characterId }, character, {
+    new: true
+  }).then((updated) => {
+    if (!updated) throw `${characterId} not updated`;
+    else return updated;
+  });
+}
+function remove(characterId) {
+  return CharacterModel.findOneAndDelete({ characterId }).then((deleted) => {
+    if (!deleted) throw `${characterId} not deleted`;
+  });
+}
+var character_card_svc_default = { index, get, create, update, remove };

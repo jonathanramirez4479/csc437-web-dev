@@ -26,37 +26,32 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var games_exports = {};
-__export(games_exports, {
-  default: () => games_default
+var movies_exports = {};
+__export(movies_exports, {
+  default: () => movies_default
 });
-module.exports = __toCommonJS(games_exports);
+module.exports = __toCommonJS(movies_exports);
 var import_express = __toESM(require("express"));
-var import_game_card_svc = __toESM(require("../services/game-card-svc"));
+var import_movie_card_svc = __toESM(require("../services/movie-card-svc"));
 const router = import_express.default.Router();
 router.get("/", (_, res) => {
-  import_game_card_svc.default.index().then((list) => res.json(list)).catch((err) => res.status(500).send(err));
+  import_movie_card_svc.default.index().then((list) => res.json(list)).catch((err) => res.status(500).send(err));
 });
-router.get("/:_id", (req, res) => {
-  const { _id } = req.params;
-  console.log("GET /:_id=", _id);
-  import_game_card_svc.default.get(_id).then((game) => {
-    res.json(game);
-  }).catch((err) => res.status(404).send(err));
+router.get("/:movieCode", (req, res) => {
+  const { movieCode } = req.params;
+  import_movie_card_svc.default.get(movieCode).then((movie) => res.json(movie)).catch((err) => res.status(404).send(err));
 });
 router.post("/", (req, res) => {
-  const newGame = req.body;
-  import_game_card_svc.default.create(newGame).then((game) => res.status(201).json(game)).catch((err) => {
-    res.status(500).send(err), console.log(err);
-  });
+  const newMovie = req.body;
+  import_movie_card_svc.default.create(newMovie).then((movie) => res.status(201).json(movie)).catch((err) => res.status(500).send(err));
 });
-router.put("/:_id", (req, res) => {
-  const { _id } = req.params;
-  const newGame = req.body;
-  import_game_card_svc.default.update(_id, newGame).then((game) => res.json(game)).catch((err) => res.status(404).end());
+router.put("/:movieCode", (req, res) => {
+  const { movieCode } = req.params;
+  const updatedCharacter = req.body;
+  import_movie_card_svc.default.update(movieCode, updatedCharacter).then((movie) => res.json(movie)).catch((err) => res.status(404).end());
 });
-router.delete("/:_id", (req, res) => {
-  const { _id } = req.params;
-  import_game_card_svc.default.remove(_id).then(() => res.status(204).end()).catch((err) => res.status(404).send(err));
+router.delete("/:movieCode", (req, res) => {
+  const { movieCode } = req.params;
+  import_movie_card_svc.default.remove(movieCode).then(() => res.status(204).end()).catch((err) => res.status(404).send(err));
 });
-var games_default = router;
+var movies_default = router;

@@ -25,4 +25,24 @@ function get(characterId: String): Promise<Character> {
     });
 }
 
-export default { index, get };
+function create(json: Character): Promise<Character> {
+  const newCharacter = new CharacterModel(json);
+  return newCharacter.save();
+}
+
+function update(characterId: String, character: Character): Promise<Character> {
+  return CharacterModel.findOneAndUpdate({ characterId }, character, {
+    new: true,
+  }).then((updated) => {
+    if (!updated) throw `${characterId} not updated`;
+    else return updated as Character;
+  });
+}
+
+function remove(characterId: String): Promise<void> {
+  return CharacterModel.findOneAndDelete({ characterId }).then((deleted) => {
+    if (!deleted) throw `${characterId} not deleted`;
+  });
+}
+
+export default { index, get, create, update, remove };

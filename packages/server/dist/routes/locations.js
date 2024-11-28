@@ -26,37 +26,32 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var games_exports = {};
-__export(games_exports, {
-  default: () => games_default
+var locations_exports = {};
+__export(locations_exports, {
+  default: () => locations_default
 });
-module.exports = __toCommonJS(games_exports);
+module.exports = __toCommonJS(locations_exports);
 var import_express = __toESM(require("express"));
-var import_game_card_svc = __toESM(require("../services/game-card-svc"));
+var import_location_card_svc = __toESM(require("../services/location-card-svc"));
 const router = import_express.default.Router();
 router.get("/", (_, res) => {
-  import_game_card_svc.default.index().then((list) => res.json(list)).catch((err) => res.status(500).send(err));
+  import_location_card_svc.default.index().then((list) => res.json(list)).catch((err) => res.status(500).send(err));
 });
-router.get("/:_id", (req, res) => {
-  const { _id } = req.params;
-  console.log("GET /:_id=", _id);
-  import_game_card_svc.default.get(_id).then((game) => {
-    res.json(game);
-  }).catch((err) => res.status(404).send(err));
+router.get("/:locationId", (req, res) => {
+  const { locationId } = req.params;
+  import_location_card_svc.default.get(locationId).then((location) => res.json(location)).catch((err) => res.status(404).send(err));
 });
 router.post("/", (req, res) => {
-  const newGame = req.body;
-  import_game_card_svc.default.create(newGame).then((game) => res.status(201).json(game)).catch((err) => {
-    res.status(500).send(err), console.log(err);
-  });
+  const newLocation = req.body;
+  import_location_card_svc.default.create(newLocation).then((location) => res.status(201).json(location)).catch((err) => res.status(500).send(err));
 });
-router.put("/:_id", (req, res) => {
-  const { _id } = req.params;
-  const newGame = req.body;
-  import_game_card_svc.default.update(_id, newGame).then((game) => res.json(game)).catch((err) => res.status(404).end());
+router.put("/:locationId", (req, res) => {
+  const { locationId } = req.params;
+  const updatedLocation = req.body;
+  import_location_card_svc.default.update(locationId, updatedLocation).then((location) => res.json(location)).catch((err) => res.status(404).end());
 });
-router.delete("/:_id", (req, res) => {
-  const { _id } = req.params;
-  import_game_card_svc.default.remove(_id).then(() => res.status(204).end()).catch((err) => res.status(404).send(err));
+router.delete("/:locationId", (req, res) => {
+  const { locationId } = req.params;
+  import_location_card_svc.default.remove(locationId).then(() => res.status(204).end()).catch((err) => res.status(404).send(err));
 });
-var games_default = router;
+var locations_default = router;

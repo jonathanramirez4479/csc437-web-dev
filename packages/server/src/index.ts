@@ -10,12 +10,15 @@ import games from "./routes/games";
 
 import { MoviesPage } from "./pages/movies";
 import Movies from "./services/movie-card-svc";
+import movies from "./routes/movies";
 
 import { CharactersPage } from "./pages/characters";
 import Characters from "./services/character-card-svc";
+import characters from "./routes/characters";
 
 import { LocationsPage } from "./pages/locations";
 import Locations from "./services/location-card-svc";
+import locations from "./routes/locations";
 
 connect("Resident-Evil-Wiki-DB");
 
@@ -27,6 +30,9 @@ app.use(express.static(staticDir));
 app.use(express.json());
 app.use("/auth", auth);
 app.use("/api/games", authenticateUser, games);
+app.use("/api/movies", movies);
+app.use("/api/characters", characters);
+app.use("/api/locations", locations);
 
 app.get("/hello", (req: Request, res: Response) => {
   res.send("<h5>Hello world</h5>");

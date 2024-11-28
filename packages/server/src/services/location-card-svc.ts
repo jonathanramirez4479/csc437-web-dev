@@ -30,4 +30,24 @@ function get(locationId: String): Promise<Location> {
     });
 }
 
-export default { index, get };
+function create(json: Location): Promise<Location> {
+  const newLocation = new LocationModel(json);
+  return newLocation.save();
+}
+
+function update(locationId: String, location: Location): Promise<Location> {
+  return LocationModel.findOneAndUpdate({ locationId }, location, {
+    new: true,
+  }).then((updated) => {
+    if (!updated) throw `${locationId} not updated`;
+    else return updated as Location;
+  });
+}
+
+function remove(locationId: String): Promise<void> {
+  return LocationModel.findOneAndDelete({ locationId }).then((deleted) => {
+    if (!deleted) throw `${locationId} not deleted`;
+  });
+}
+
+export default { index, get, create, update, remove };
