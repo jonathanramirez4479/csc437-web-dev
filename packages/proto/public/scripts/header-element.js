@@ -47,11 +47,11 @@ export class HeaderElement extends HTMLElement {
           <img class="profile-pic" src="/images/profile-pic.jpg" />
         </div>
         <div id="sub-header">
-          <h5><a href="/pages/home.html">Home</a></h5>
+          <h5><a href="/index.html">Home</a></h5>
           <h5><a href="/games">Games</a></h5>
-          <h5><a href="/pages/movies.html">Movies</a></h5>
-          <h5><a href="/pages/characters.html">Characters</a></h5>
-          <h5><a href="/pages/locations.html">Locations</a></h5>
+          <h5><a href="/movies">Movies</a></h5>
+          <h5><a href="/characters">Characters</a></h5>
+          <h5><a href="/locations">Locations</a></h5>
         </div>
       </header>
     </template>

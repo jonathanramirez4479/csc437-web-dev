@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/styles/reset.css" />
     <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,106 +34,240 @@
   <body>
     <mu-auth provides="resident-evil:auth">
       <header-element></header-element>
-      <section class="category">
-        <h2 class="category-header">
-          <svg class="icon">
-            <use href="/icons/video-game.svg#icon-video-game" />
-          </svg>
-          Games
-        </h2>
-        <ul>
-          <li>
-            <h4>
-              <a href="/games/resident-evil4.html">Resident Evil 4 (Remake)</a>
-            </h4>
-          </li>
-        </ul>
-      </section>
-      <section class="category">
-        <h2 class="category-header">
-          <svg class="icon">
-            <use href="/icons/movie.svg#icon-movie" />
-          </svg>
-          Movies
-        </h2>
-        <ul>
-          <li>
-            <h4>
-              <a href="/movies/resident-evil-apocalypse.html"
-                >Resident Evil: Apocalypse</a
-              >
-            </h4>
-          </li>
-        </ul>
-      </section>
-      <section class="category">
-        <h2 class="category-header">
-          <svg class="icon">
-            <use href="/icons/heroes.svg#icon-hero" />
-          </svg>
-          Heroes
-        </h2>
-        <ul>
-          <li>
-            <h4>
-              <a href="/characters/heroes/chris-redfield.html"
-                >Chris Redfield</a
-              >
-            </h4>
-          </li>
-        </ul>
-      </section>
-      <section class="category">
-        <h2 class="category-header">
-          <svg class="icon">
-            <use href="/icons/foes.svg#icon-foe" />
-          </svg>
-          Foes
-        </h2>
-        <ul>
-          <li>
-            <h4>
-              <a href="/characters/enemies/albert-wesker.html">Albert Wesker</a>
-            </h4>
-          </li>
-        </ul>
-      </section>
-      <section class="category">
-        <h2 class="category-header">
-          <svg class="icon">
-            <use href="/icons/game-console.svg#icon-game-console" />
-          </svg>
-          Consoles to play Resident Evil games on
-        </h2>
-        <ul>
-          <h4>
-            <li>
-              <a href="/consoles/playstation2.html">Playstation 2</a>
+      <!-- Popular Games -->
+      <main>
+        <h3>Popular games</h3>
+        <div class="list-wrapper">
+          <ul class="list">
+            <li class="item">
+              <div class="content">
+                <img src="/images/game-covers/re0.jpg" />
+                <div class="overlay">
+                  <p>Resident Evil 0</p>
+                  <p>IGN Rating: 6.5/10</p>
+                </div>
+              </div>
             </li>
-            <li>
-              <a href="/consoles/xbox-series-x.html">Xbox Series X</a>
+            <li class="item">
+              <div class="content">
+                <img src="/images/game-covers/re2.webp" />
+                <div class="overlay">
+                  <p>Resident Evil 2</p>
+                  <p>IGN Rating: 9/10</p>
+                </div>
+              </div>
             </li>
-            <li>
-              <a href="/consoles/playstation5.html">Playstation 5</a>
+            <li class="item">
+              <div class="content">
+                <img src="/images/game-covers/re4.jpg" />
+                <div class="overlay">
+                  <p>Resident Evil 4</p>
+                  <p>IGN Rating: 10/10</p>
+                </div>
+              </div>
             </li>
-          </h4>
-        </ul>
-      </section>
-      <section class="category">
-        <h2 class="category-header">
-          <svg class="icon">
-            <use href="/icons/locations.svg#icon-location" />
-          </svg>
-          Iconic locations from the Resident Evil Series
-        </h2>
-        <ul>
-          <li>
-            <h4>
-              <a href="/locations/rcpd.html">Racoon City Police Department</a>
-            </h4>
-          </li>
-        </ul>
-      </section>
+            <li class="item">
+              <div class="content">
+                <img src="/images/game-covers/re3.webp" />
+                <div class="overlay">
+                  <p>Resident Evil 3</p>
+                  <p>Fan Rating: 9/10</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/game-covers/re5.jpg" />
+                <div class="overlay">
+                  <p>Resident Evil 5</p>
+                  <p>Fan Rating: 9.3/5</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/game-covers/re-biohazard.jpg" />
+                <div class="overlay">
+                  <p>Resident Evil 7 Biohazard</p>
+                  <p>Fan Rating: 7.7/10</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <button class="button button--previous" type="button">➜</button>
+          <button class="button button--next" type="button">➜</button>
+        </div>
+        <script type="module" src="scripts/carousel.js"></script>
+        <!-- Popular Movies -->
+        <h3>Popular Movies</h3>
+        <div class="list-wrapper">
+          <ul class="list">
+            <li class="item">
+              <div class="content">
+                <img src="/images/movie-covers/re.jpg" />
+                <div class="overlay">
+                  <p>Resident Evil</p>
+                  <p>2002</p>
+                  <p>IMDb Rating: 6.6/10</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/movie-covers/re-retribution.jpg" />
+                <div class="overlay">
+                  <p>Resident Evil: Retribution</p>
+                  <p>2012</p>
+                  <p>IMDb Rating: 5.3/10</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/movie-covers/re-apocalypse.jpg" />
+                <div class="overlay">
+                  <p>Resident Evil: Apocalypse</p>
+                  <p>2004</p>
+                  <p>Fan Rating: 6.1/10</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/movie-covers/re-extinction.jpeg" />
+                <div class="overlay">
+                  <p>Resident Evil: Extinction</p>
+                  <p>2007</p>
+                  <p>IMDb Rating: 6.2/10</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/movie-covers/re-vendetta.webp" />
+                <div class="overlay">
+                  <p>Resident Evil: Vendetta</p>
+                  <p>2017</p>
+                  <p>IMDb Rating: 6.2/10</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/movie-covers/re-death-island.png" />
+                <div class="overlay">
+                  <p>Resident Evil: Death Island</p>
+                  <p>2023</p>
+                  <p>IMDb Rating: 5.7/10</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <button class="button button--previous" type="button">➜</button>
+          <button class="button button--next" type="button">➜</button>
+        </div>
+        <!-- Iconic Characters -->
+        <h3>Iconic Characters</h3>
+        <div class="list-wrapper">
+          <ul class="list">
+            <li class="item">
+              <div class="content">
+                <img src="/images/character-portraits/claire-redfield.webp" />
+                <div class="overlay">
+                  <p>Claire Redfield</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/character-portraits/chris-redfield.jpg" />
+                <div class="overlay">
+                  <p>Chris Redfield</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/character-portraits/wesker.jpg" />
+                <div class="overlay">
+                  <p>Albert Wesker</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/character-portraits/nemesis.webp" />
+                <div class="overlay">
+                  <p>Nemesis</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/character-portraits/leon-kennedy.webp" />
+                <div class="overlay">
+                  <p>Leon Kennedy</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <button class="button button--previous" type="button">➜</button>
+          <button class="button button--next" type="button">➜</button>
+        </div>
+        <!-- Memorable Locations -->
+        <h3>Memorable Locations</h3>
+        <div class="list-wrapper">
+          <ul class="list">
+            <li class="item">
+              <div class="content">
+                <img src="/images/locations/rcpd.webp" />
+                <div class="overlay">
+                  <p>Racoon City Police Department</p>
+                  <p>(Resident Evil 2)</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/locations/re3-downtown-rc.webp" />
+                <div class="overlay">
+                  <p>Downtown Racoon City</p>
+                  <p>(Resident Evil 3)</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/locations/re4-village.webp" />
+                <div class="overlay">
+                  <p>The Village</p>
+                  <p>(Resident Evil 4)</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/locations/rockfort-prison.webp" />
+                <div class="overlay">
+                  <p>Rockfort Prison</p>
+                  <p>(Resident Evil Code Veronica)</p>
+                </div>
+              </div>
+            </li>
+            <li class="item">
+              <div class="content">
+                <img src="/images/locations/the-morgue.webp" />
+                <div class="overlay">
+                  <p>The Morgue</p>
+                  <p>(Resident Evil 2)</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <button class="button button--previous" type="button">➜</button>
+          <button class="button button--next" type="button">➜</button>
+        </div>
+      </main>
     </mu-auth>
   </body>
 </html>

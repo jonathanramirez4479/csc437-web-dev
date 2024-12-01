@@ -45,13 +45,14 @@ class MoviesPage {
       styles: [],
       scripts: [
         `
-        import { define } from "@calpoly/mustang";
+        import { define, Auth } from "@calpoly/mustang";
         import { HeaderElement } from "/scripts/header-element.js";
         import { MovieCardElement } from "/scripts/movie-card.js";
 
         define({
-            "header-element": HeaderElement,
-            "movie-card": MovieCardElement,
+          "mu-auth": Auth.Provider,
+          "header-element": HeaderElement,
+          "movie-card": MovieCardElement
         });
         `
       ]
@@ -66,8 +67,10 @@ class MoviesPage {
     const movieList = movies ? import_server.html`${movies.map(this.renderMovie)}` : "";
     return import_server.html`
       <body>
-        <header-element></header-element>
-        <main class="category-page">${movieList}</main>
+        <mu-auth provides="resident-evil:auth">
+          <header-element></header-element>
+          <main class="category-page">${movieList}</main>
+        </mu-auth>
       </body>
     `;
   }

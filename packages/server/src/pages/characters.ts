@@ -16,11 +16,12 @@ export class CharactersPage {
       styles: [],
       scripts: [
         `
-            import { define } from "@calpoly/mustang";
+            import { define, Auth } from "@calpoly/mustang";
             import { HeaderElement } from "/scripts/header-element.js";
             import { CharacterCardElement } from "/scripts/character-card.js";
 
             define({
+                "mu-auth": Auth.Provider,
                 "header-element": HeaderElement,
                 "character-card": CharacterCardElement,
             });
@@ -32,11 +33,7 @@ export class CharactersPage {
   renderCharacter(character: Character) {
     const { characterId, name, imgSrc, fanRating } = character;
     return html`
-      <character-card src="/api/characters/${characterId}">
-        <!-- <img slot="imgSrc" src=${imgSrc} />
-        <span slot="name">${name}</span>
-        <span slot="fan-rating">Fan Rating: ${fanRating}/10</span> -->
-      </character-card>
+      <character-card src="/api/characters/${characterId}"> </character-card>
     `;
   }
 
@@ -48,8 +45,10 @@ export class CharactersPage {
 
     return html`
       <body>
-        <header-element></header-element>
-        <main class="category-page">${characterList}</main>
+        <mu-auth provides="resident-evil:auth">
+          <header-element></header-element>
+          <main class="category-page">${characterList}</main>
+        </mu-auth>
       </body>
     `;
   }

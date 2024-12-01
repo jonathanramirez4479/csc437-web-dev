@@ -16,13 +16,14 @@ export class LocationsPage {
       styles: [],
       scripts: [
         `
-        import { define } from "@calpoly/mustang";
+        import { define, Auth } from "@calpoly/mustang";
         import { HeaderElement } from "/scripts/header-element.js";
         import { LocationCardElement } from "/scripts/location-card.js";
 
         define({
-            "header-element": HeaderElement,
-            "location-card": LocationCardElement,
+          "header-element": HeaderElement,
+          "location-card": LocationCardElement,
+          "mu-auth": Auth.Provider
         });
         `,
       ],
@@ -34,12 +35,7 @@ export class LocationsPage {
     const appearsInVal = appearsIn?.at(0) || "";
 
     return html`
-      <location-card src="/api/locations/${locationId}">
-        <!-- <img slot="imgSrc" src=${imgSrc} />
-        <span slot="name">${name}</span>
-        <span slot="source">(${appearsInVal})</span>
-        <span slot="fanRating">${fanRating}</span> -->
-      </location-card>
+      <location-card src="/api/locations/${locationId}"> </location-card>
     `;
   }
 
@@ -51,8 +47,10 @@ export class LocationsPage {
 
     return html`
       <body>
-        <header-element></header-element>
-        <main class="category-page">${characterList}</main>
+        <mu-auth provides="resident-evil:auth">
+          <header-element></header-element>
+          <main class="category-page">${characterList}</main>
+        </mu-auth>
       </body>
     `;
   }

@@ -45,9 +45,9 @@ app.use(import_express.default.static(staticDir));
 app.use(import_express.default.json());
 app.use("/auth", import_auth.default);
 app.use("/api/games", import_auth.authenticateUser, import_games2.default);
-app.use("/api/movies", import_movies2.default);
-app.use("/api/characters", import_characters2.default);
-app.use("/api/locations", import_locations2.default);
+app.use("/api/movies", import_auth.authenticateUser, import_movies2.default);
+app.use("/api/characters", import_auth.authenticateUser, import_characters2.default);
+app.use("/api/locations", import_auth.authenticateUser, import_locations2.default);
 app.get("/hello", (req, res) => {
   res.send("<h5>Hello world</h5>");
 });

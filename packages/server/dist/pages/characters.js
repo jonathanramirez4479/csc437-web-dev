@@ -45,11 +45,12 @@ class CharactersPage {
       styles: [],
       scripts: [
         `
-            import { define } from "@calpoly/mustang";
+            import { define, Auth } from "@calpoly/mustang";
             import { HeaderElement } from "/scripts/header-element.js";
             import { CharacterCardElement } from "/scripts/character-card.js";
 
             define({
+                "mu-auth": Auth.Provider,
                 "header-element": HeaderElement,
                 "character-card": CharacterCardElement,
             });
@@ -60,11 +61,7 @@ class CharactersPage {
   renderCharacter(character) {
     const { characterId, name, imgSrc, fanRating } = character;
     return import_server.html`
-      <character-card src="/api/characters/${characterId}">
-        <!-- <img slot="imgSrc" src=${imgSrc} />
-        <span slot="name">${name}</span>
-        <span slot="fan-rating">Fan Rating: ${fanRating}/10</span> -->
-      </character-card>
+      <character-card src="/api/characters/${characterId}"> </character-card>
     `;
   }
   renderBody() {
@@ -72,8 +69,10 @@ class CharactersPage {
     const characterList = characters ? import_server.html`${characters.map(this.renderCharacter)}` : "";
     return import_server.html`
       <body>
-        <header-element></header-element>
-        <main class="category-page">${characterList}</main>
+        <mu-auth provides="resident-evil:auth">
+          <header-element></header-element>
+          <main class="category-page">${characterList}</main>
+        </mu-auth>
       </body>
     `;
   }

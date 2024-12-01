@@ -30,9 +30,9 @@ app.use(express.static(staticDir));
 app.use(express.json());
 app.use("/auth", auth);
 app.use("/api/games", authenticateUser, games);
-app.use("/api/movies", movies);
-app.use("/api/characters", characters);
-app.use("/api/locations", locations);
+app.use("/api/movies", authenticateUser, movies);
+app.use("/api/characters", authenticateUser, characters);
+app.use("/api/locations", authenticateUser, locations);
 
 app.get("/hello", (req: Request, res: Response) => {
   res.send("<h5>Hello world</h5>");

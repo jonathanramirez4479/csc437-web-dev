@@ -47,10 +47,12 @@ class GamesPage {
         `
         import { define, Auth } from "@calpoly/mustang";
         import { GameCard } from "/scripts/game-card.js";
+        import { HeaderElement } from "/scripts/header-element.js";
         
         define ({
           "game-card": GameCard,
-          "mu-auth": Auth.Provider
+          "mu-auth": Auth.Provider,
+          "header-element": HeaderElement
         });
         `
       ]

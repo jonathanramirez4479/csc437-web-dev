@@ -1,8 +1,6 @@
 import bcrypt from "bcryptjs";
 import { Schema, model } from "mongoose";
 import { Credential } from "models/credential";
-import { rejects } from "assert";
-import { resolve } from "path";
 
 const credentialSchema = new Schema<Credential>(
   {
@@ -54,7 +52,7 @@ function verify(username: string, password: string): Promise<string> {
       .find({ username })
       .then((found) => {
         if (found && found.length === 1) return found[0];
-        else reject;
+        else reject("Invalid  username or password");
       })
       .then((credsOnFile) => {
         if (credsOnFile)

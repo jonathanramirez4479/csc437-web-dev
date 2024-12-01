@@ -49,7 +49,7 @@ const credentialSchema = new import_mongoose.Schema(
 );
 const credentialModel = (0, import_mongoose.model)("Credential", credentialSchema);
 function create(username, password) {
-  return new Promise((resolve2, reject) => {
+  return new Promise((resolve, reject) => {
     if (!username || !password) {
       reject("must provide username and password");
     }
@@ -62,22 +62,22 @@ function create(username, password) {
           hashedPassword
         });
         creds.save().then((created) => {
-          if (created) resolve2(created);
+          if (created) resolve(created);
         });
       });
     });
   });
 }
 function verify(username, password) {
-  return new Promise((resolve2, reject) => {
+  return new Promise((resolve, reject) => {
     credentialModel.find({ username }).then((found) => {
       if (found && found.length === 1) return found[0];
-      else reject;
+      else reject("Invalid  username or password");
     }).then((credsOnFile) => {
       if (credsOnFile)
         import_bcryptjs.default.compare(password, credsOnFile.hashedPassword, (_, result) => {
           console.log("Verified", result, credsOnFile.username);
-          if (result) resolve2(credsOnFile.username);
+          if (result) resolve(credsOnFile.username);
           else reject("Invalid username or password");
         });
       else reject("Invalid username or password");

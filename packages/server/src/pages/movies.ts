@@ -16,13 +16,14 @@ export class MoviesPage {
       styles: [],
       scripts: [
         `
-        import { define } from "@calpoly/mustang";
+        import { define, Auth } from "@calpoly/mustang";
         import { HeaderElement } from "/scripts/header-element.js";
         import { MovieCardElement } from "/scripts/movie-card.js";
 
         define({
-            "header-element": HeaderElement,
-            "movie-card": MovieCardElement,
+          "mu-auth": Auth.Provider,
+          "header-element": HeaderElement,
+          "movie-card": MovieCardElement
         });
         `,
       ],
@@ -40,8 +41,10 @@ export class MoviesPage {
 
     return html`
       <body>
-        <header-element></header-element>
-        <main class="category-page">${movieList}</main>
+        <mu-auth provides="resident-evil:auth">
+          <header-element></header-element>
+          <main class="category-page">${movieList}</main>
+        </mu-auth>
       </body>
     `;
   }

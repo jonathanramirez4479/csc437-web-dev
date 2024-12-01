@@ -89,8 +89,6 @@ function submitLoginForm(event, endpoint, redirect) {
   };
   const body = JSON.stringify(Object.fromEntries(data));
 
-  console.log("POST login request:", body);
-
   fetch(endpoint, { method, headers, body })
     .then((res) => {
       if (res.status !== 200)
