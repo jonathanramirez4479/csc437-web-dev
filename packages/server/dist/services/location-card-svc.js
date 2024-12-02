@@ -26,7 +26,7 @@ const LocationSchema = new import_mongoose.Schema(
   {
     locationId: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
-    imgSrc: { type: String, required: true, trim: true },
+    imgSrc: { data: Buffer, contentType: String },
     appearsIn: {
       type: [String],
       set: (appearsIn) => appearsIn.map((name) => name.trim()),

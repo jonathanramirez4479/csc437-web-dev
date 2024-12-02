@@ -17,31 +17,37 @@ export class GameCard extends HTMLElement {
 
   static template = html`
     <template>
-      <button id="edit">Edit</button>
-      <div class="view">
-        <slot name="imgSrc">
-          <img src="/images/No_Image_Available.jpg" />
-        </slot>
-        <div>
-          <p><slot name="title">Title</slot></p>
-          <p><slot name="releaseDate">Release date</slot></p>
-          <p><slot name="fanRating">0/5</slot></p>
+      <div class="card-container">
+        <button id="edit">Edit</button>
+        <div class="view">
+          <slot name="imgSrc">
+            <img src="/images/No_Image_Available.jpg" />
+          </slot>
+          <div class="overlay">
+            <p><slot name="title">Title</slot></p>
+            <p><slot name="releaseYear">Release date</slot></p>
+            <p><slot name="fanRating">0/5</slot></p>
+          </div>
         </div>
+        <mu-form class="edit">
+          <label>
+            <span>Game Cover</span>
+            <input name="imgSrc" type="file" />
+          </label>
+          <label>
+            <span>Title</span>
+            <input name="title" />
+          </label>
+          <label>
+            <span>Release Date</span>
+            <input name="releaseYear" />
+          </label>
+          <label>
+            <span>Fan Rating</span>
+            <input name="fanRating" />
+          </label>
+        </mu-form>
       </div>
-      <mu-form class="edit">
-        <label>
-          <span>Title</span>
-          <input name="title" />
-        </label>
-        <label>
-          <span>Release Date</span>
-          <input name="releaseDate" />
-        </label>
-        <label>
-          <span>Fan Rating</span>
-          <input name="fanRating" />
-        </label>
-      </mu-form>
     </template>
   `;
 
@@ -70,6 +76,10 @@ export class GameCard extends HTMLElement {
     return this.shadowRoot.getElementById("edit");
   }
 
+  get gameCoverInput() {
+    return this.form.querySelector('input[name="imgSrc"]');
+  }
+
   hydrate(url) {
     fetch(url, { headers: this.authorization })
       .then((res) => {
@@ -78,7 +88,12 @@ export class GameCard extends HTMLElement {
       })
       .then((json) => {
         this.renderSlots(json);
-        this.form.init = json; // populate mu-form
+        const formJson = { ...json };
+        if (!this.imgSrc) delete formJson.imgSrc;
+        this.form.init = formJson;
+        const releaseYear = new Date(json.releaseDate).getFullYear();
+        this.form.querySelector('input[name="releaseYear"]').value =
+          releaseYear;
       })
       .catch((error) => console.log(`Failed to render data ${url}:`, error));
   }
@@ -89,6 +104,11 @@ export class GameCard extends HTMLElement {
       switch (key) {
         case "imgSrc":
           return html`<img slot=${key} src=${value} />`;
+        case "releaseDate":
+          const releaseYear = new Date(value).getFullYear();
+          return html`<span slot="releaseYear">(${releaseYear})</span>`;
+        case "fanRating":
+          return html`<span slot="fanRating">IGN Rating: ${value}/10</span>`;
         default:
           return html`<span slot="${key}">${value}</span>`;
       }
@@ -111,6 +131,10 @@ export class GameCard extends HTMLElement {
     });
 
     this.editButton.addEventListener("click", () => (this.mode = "edit"));
+
+    this.gameCoverInput.addEventListener("change", (event) => {
+      this.handleGameCoverSelected(event);
+    });
   }
 
   _authObserver = new Observer(this, "resident-evil:auth");
@@ -132,6 +156,14 @@ export class GameCard extends HTMLElement {
   }
 
   submit(url, json) {
+    if (json.releaseYear) {
+      let jsonDate = json.releaseDate;
+      let date = new Date(jsonDate);
+      date.setFullYear(json.releaseYear);
+      json.releaseDate = date.toISOString();
+    }
+
+    if (this.imgSrc) json.imgSrc = this.imgSrc;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -147,11 +179,30 @@ export class GameCard extends HTMLElement {
       })
       .then((json) => {
         this.renderSlots(json);
-        this.form.init = json;
+        const formJson = { ...json };
+        delete formJson.imgSrc;
+        this.form.init = formJson;
+        const releaseYear = new Date(json.releaseDate).getFullYear();
+        this.form.querySelector('input[name="releaseYear"]').value =
+          releaseYear;
         this.mode = "view";
       })
       .catch((error) => {
         console.log(`Failed to submit ${url}: `, error);
       });
+  }
+
+  handleGameCoverSelected(event) {
+    const target = event.target;
+    const selectedFile = target.files[0];
+
+    const reader = new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.onload = () => resolve(fr.result);
+      fr.onerror = (error) => reject(error);
+      fr.readAsDataURL(selectedFile);
+    });
+
+    reader.then((result) => (this.imgSrc = result));
   }
 }

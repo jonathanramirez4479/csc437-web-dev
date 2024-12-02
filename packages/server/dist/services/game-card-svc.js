@@ -24,7 +24,7 @@ module.exports = __toCommonJS(game_card_svc_exports);
 var import_mongoose = require("mongoose");
 const GameSchema = new import_mongoose.Schema(
   {
-    imgSrc: { type: String, required: true, trim: true },
+    imgSrc: { data: Buffer, contentType: String },
     title: { type: String, required: true, trim: true },
     releaseDate: { type: Date, required: true },
     fanRating: { type: Number, required: true }

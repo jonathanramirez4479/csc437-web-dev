@@ -5,7 +5,7 @@ const MovieSchema = new Schema<Movie>(
   {
     movieCode: { type: String, required: true, trim: true },
     title: { type: String, required: true, trim: true },
-    imgSrc: { type: String, required: true, trim: true },
+    imgSrc: { data: Buffer, contentType: String },
     releaseDate: { type: Date, required: true },
     imdbRating: { type: Number, required: true },
   },

@@ -5,7 +5,7 @@ const LocationSchema = new Schema<Location>(
   {
     locationId: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
-    imgSrc: { type: String, required: true, trim: true },
+    imgSrc: { data: Buffer, contentType: String },
     appearsIn: {
       type: [String],
       set: (appearsIn: [String]) => appearsIn.map((name) => name.trim()),

@@ -42,7 +42,7 @@ const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
 const staticDir = process.env.STATIC || "public";
 app.use(import_express.default.static(staticDir));
-app.use(import_express.default.json());
+app.use(import_express.default.json({ limit: "2mb" }));
 app.use("/auth", import_auth.default);
 app.use("/api/games", import_auth.authenticateUser, import_games2.default);
 app.use("/api/movies", import_auth.authenticateUser, import_movies2.default);

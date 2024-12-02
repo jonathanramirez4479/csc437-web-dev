@@ -1,7 +1,33 @@
 import { css } from "@calpoly/mustang";
 
 const GridCardStyle = css`
+  :host {
+    display: contents;
+  }
+
+  :host([mode="edit"]),
+  :host([mode="new"]) {
+    --display-view-none: none;
+  }
+
+  :host([mode="view"]) {
+    --display-editor-none: none;
+  }
+
+  mu-form.edit {
+    display: var(--display-editor-none);
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: var(--width-grid-item);
+    height: calc(var(--height-grid-item) * 1.5);
+  }
+
   .view {
+    display: var(--display-view-none);
     position: relative;
     margin-top: var(--margin-top-grid-item);
     flex: 1;

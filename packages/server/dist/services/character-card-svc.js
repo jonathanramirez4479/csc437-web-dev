@@ -26,7 +26,7 @@ const CharacterSchema = new import_mongoose.Schema(
   {
     characterId: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
-    imgSrc: { type: String, required: true, trim: true },
+    imgSrc: { data: Buffer, contentType: String },
     fanRating: { type: Number, required: true }
   },
   { collection: "characters" }

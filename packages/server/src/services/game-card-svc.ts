@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 
 const GameSchema = new Schema<Game>(
   {
-    imgSrc: { type: String, required: true, trim: true },
+    imgSrc: { data: Buffer, contentType: String },
     title: { type: String, required: true, trim: true },
     releaseDate: { type: Date, required: true },
     fanRating: { type: Number, required: true },

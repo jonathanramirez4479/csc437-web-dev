@@ -1,7 +1,7 @@
 export interface Location {
   locationId: string;
   name: string;
-  imgSrc: string;
+  imgSrc: string | undefined;
   appearsIn: [string];
   fanRating: number;
 }

@@ -27,7 +27,7 @@ const port = process.env.PORT || 3000;
 const staticDir = process.env.STATIC || "public";
 
 app.use(express.static(staticDir));
-app.use(express.json());
+app.use(express.json({ limit: "2mb" }));
 app.use("/auth", auth);
 app.use("/api/games", authenticateUser, games);
 app.use("/api/movies", authenticateUser, movies);
