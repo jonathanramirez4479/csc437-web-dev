@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { MovieDetailsElement } from "/scripts/movie-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "movie-details": MovieDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <movie-details>
+      <img slot="imgSrc" src="../../images/movie-covers/re-death-island.png" />
+      <span slot="title">Resident Evil: Death Island</span>
+      <span slot="releaseDate">July 7, 2023</span>
+      <span slot="genres">Horror, Action, Thriller</span>
+      <span slot="imdbRating">5.7</span>
+      <span slot="summary">
+        Agent Chris Redfield and his team investigate a zombie outbreak in San
+        Francisco. They follow a clue that leads them to Alcatraz Island, where
+        a new horror awaits them.
+      </span>
+      <span slot="cast">Matthew Mercer</span>
+      <span slot="role">Leon S. Kennedy</span>
+    </movie-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/movie-covers/re-death-island.png" />
+        <p>Resident Evil: Death Island</p>
+        <p>July 7, 2023</p>
+        <p>Genres: Horror, Action, Thriller</p>
+        <p>IMDb: 5.7/10</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            Agent Chris Redfield and his team investigate a zombie outbreak in
+            San Francisco. They follow a clue that leads them to Alcatraz
+            Island, where a new horror awaits them.
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Cast:</dt>
+          <dd>
+            Matthew Mercer:
+            <a href="../characters/leon-kennedy.html">Leon S. Kennedy</a>
+          </dd>
+          <dd>
+            Nicole Tompkins:
+            <a href="../characters/jill-valentine.html">Jill Valentine</a>
+          </dd>
+          <dd>Cristina Vee: Maria Gomez</dd>
+          <dd>
+            Kevin Dorman:
+            <a href="../characters/chris-redfield.html">Chris Redfield</a>
+          </dd>
+          <dd>Erin Cahill: Rebecca Chambers</dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

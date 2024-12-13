@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { MovieDetailsElement } from "/scripts/movie-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "movie-details": MovieDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <movie-details>
+      <img slot="imgSrc" src="../../images/movie-covers/re-retribution.jpg" />
+      <span slot="title">Resident Evil: Retribution</span>
+      <span slot="releaseDate">September 10, 2010</span>
+      <span slot="genres">Horror, Action, Thriller</span>
+      <span slot="imdbRating">5.8</span>
+      <span slot="summary">
+        While still out to destroy the evil Umbrella Corporation, Alice joins a
+        group of survivors living in a prison surrounded by the infected who
+        also want to relocate to the mysterious but supposedly unharmed safe
+        haven known only as Arcadia.
+      </span>
+      <span slot="cast">Milla Jovovich</span>
+      <span slot="role">Alice</span>
+    </movie-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/movie-covers/re-retribution.jpg" />
+        <p>Resident Evil: Retribution</p>
+        <p>September 10, 2010</p>
+        <p>Genres: Horror, Action, Thriller</p>
+        <p>IMDb: 5.8/10</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            While still out to destroy the evil Umbrella Corporation, Alice
+            joins a group of survivors living in a prison surrounded by the
+            infected who also want to relocate to the mysterious but supposedly
+            unharmed safe haven known only as Arcadia.
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Cast:</dt>
+          <dd>Milla Jovovich: Alice</dd>
+          <dd>
+            Ali Larter:
+            <a href="../characters/claire-redfield.html">Claire Redfield</a>
+          </dd>
+          <dd>
+            Wentworth Miller:
+            <a href="../characters/chris-redfield.html">Chris Redfield</a>
+          </dd>
+          <dd>
+            Shawn Roberts:
+            <a href="../characters/albert-wesker.html">Albert Wesker</a>
+          </dd>
+          <dd>Boris Kodjoe: Luther West</dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

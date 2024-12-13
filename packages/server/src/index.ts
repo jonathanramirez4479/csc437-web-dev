@@ -1,6 +1,9 @@
 import express, { Request, Response } from "express";
 import { connect } from "./services/mongo";
 
+import fs from "node:fs/promises";
+import path from "path";
+
 import auth, { authenticateUser } from "./routes/auth";
 import { LoginPage } from "./pages/auth";
 
@@ -69,6 +72,11 @@ app.get("/locations", (req: Request, res: Response) => {
 app.get("/login", (req: Request, res: Response) => {
   const page = new LoginPage();
   res.set("Content-Type", "text/html").send(page.render());
+});
+
+app.use("/app", (req: Request, res: Response) => {
+  const indexHtml = path.resolve(staticDir, "index.html");
+  fs.readFile(indexHtml, { encoding: "utf8" }).then((html) => res.send(html));
 });
 
 app.listen(port, () => {

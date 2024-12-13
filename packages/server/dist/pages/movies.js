@@ -59,7 +59,7 @@ class MoviesPage {
     });
   }
   renderMovie(movie) {
-    const { movieCode, title, imgSrc, releaseDate, imdbRating } = movie;
+    const { movieCode } = movie;
     return import_server.html` <movie-card src="/api/movies/${movieCode}"></movie-card> `;
   }
   renderBody() {

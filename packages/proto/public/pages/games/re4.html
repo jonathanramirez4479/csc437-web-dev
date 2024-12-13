@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { GameDetailsElement } from "/scripts/game-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "game-details": GameDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <game-details>
+      <img slot="imgSrc" src="../../images/game-covers/re4.jpg" />
+      <span slot="title">Resident Evil 4</span>
+      <span slot="releaseDate">March 23, 2023</span>
+      <span slot="genre">Survival Horror</span>
+      <span slot="ignRating">10</span>
+      <span slot="publisher">Capcom</span>
+      <span slot="platforms"
+        >PlayStation 5, PlayStation 4, Xbox Series X and Series S, Microsoft
+        Windows, macOS, iOS</span
+      >
+      <span slot="summary"
+        >The game's main protagonist is Leon S. Kennedy, one of the few
+        survivors of the Raccoon City incident, who was recruited and trained by
+        the US Government to become a special agent after they learned of his
+        actions in Raccoon City. Now an agent for a special security agency,
+        Leon is sent to Spain on a mission to rescue Ashley Graham, the
+        President's daughter, who has been kidnapped by a mysterious cult
+        organization. Following the Raccoon City disaster and subsequent
+        outrage, the Umbrella Corporation was sanctioned by the US government
+        and financially crippled, all but ceasing to exist as a business.</span
+      >
+      <span slot="mainCharacters">Leon S. Kennedy</span>
+      <span slot="supportingCharacters">Ada Wong</span>
+    </game-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/game-covers/re4.jpg" />
+        <p>Resident Evil 4</p>
+        <p>March 23, 2023</p>
+        <p>Genre: Survival Horror</p>
+        <p>IGN: 10/10</p>
+        <p>Publisher: Capcom</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Platforms:</dt>
+          <dd>
+            PlayStation 5, PlayStation 4, Xbox Series X and Series S, Microsoft
+            Windows, macOS, iOS
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            The game's main protagonist is Leon S. Kennedy, one of the few
+            survivors of the Raccoon City incident, who was recruited and
+            trained by the US Government to become a special agent after they
+            learned of his actions in Raccoon City. Now an agent for a special
+            security agency, Leon is sent to Spain on a mission to rescue Ashley
+            Graham, the President's daughter, who has been kidnapped by a
+            mysterious cult organization. Following the Raccoon City disaster
+            and subsequent outrage, the Umbrella Corporation was sanctioned by
+            the US government and financially crippled, all but ceasing to exist
+            as a business.
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Main Characters:</dt>
+          <dd><a href="../characters/leon-kennedy.html">Leon S. Kennedy</a></dd>
+        </div>
+        <div class="info-group">
+          <dt>Supporting Characters:</dt>
+          <dd>Ada Wong</dd>
+          <dd>Ashley Graham</dd>
+          <dd>Luis Sera</dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

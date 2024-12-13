@@ -26,9 +26,13 @@ const MovieSchema = new import_mongoose.Schema(
   {
     movieCode: { type: String, required: true, trim: true },
     title: { type: String, required: true, trim: true },
-    imgSrc: { data: Buffer, contentType: String },
+    img: { data: Buffer, contentType: String },
     releaseDate: { type: Date, required: true },
-    imdbRating: { type: Number, required: true }
+    imdbRating: { type: Number, required: true },
+    genres: { type: [String], required: false },
+    summary: { type: String, required: false },
+    cast: { type: String, required: false },
+    role: { type: String, required: false }
   },
   { collection: "movies" }
 );

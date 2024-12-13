@@ -1,7 +1,13 @@
 export interface Game {
   _id: string;
-  imgSrc: string | undefined;
+  img?: string;
   title: string;
   releaseDate: Date;
-  fanRating: number;
+  ignRating: number;
+  genres: Array<string>;
+  publisher: string;
+  summary: string;
+  mainCharacters: Array<string>;
+  supportingCharacters: Array<string>;
+  platforms: Array<string>;
 }

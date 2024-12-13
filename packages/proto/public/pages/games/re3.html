@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { GameDetailsElement } from "/scripts/game-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "game-details": GameDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <game-details>
+      <img slot="imgSrc" src="../../images/game-covers/re3.webp" />
+      <span slot="title">Resident Evil 3</span>
+      <span slot="releaseDate">April 2, 2020</span>
+      <span slot="genre">Survival Horror</span>
+      <span slot="ignRating">9</span>
+      <span slot="publisher">Capcom</span>
+      <span slot="platforms"
+        >PlayStation 5, PlayStation 4, Xbox One, Nintendo Switch</span
+      >
+      <span slot="summary"
+        >The game follows Jill Valentine as she attempts to escape a zombie
+        outbreak while hunted by an intelligent bioweapon known as Nemesis-T
+        Type, and Carlos Oliveira, deployed by Umbrella as "damage
+        control".</span
+      >
+      <span slot="mainCharacters">Jill Valentine</span>
+      <span slot="supportingCharacters">Nikolai Zinoviev</span>
+    </game-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/game-covers/re3.webp" />
+        <p>Resident Evil 3</p>
+        <p>April 2, 2020</p>
+        <p>Genre: Survival Horror</p>
+        <p>IGN: 9/10</p>
+        <p>Publisher: Capcom</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Platforms:</dt>
+          <dd>PlayStation 5, PlayStation 4, Xbox One, Nintendo Switch</dd>
+        </div>
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            The game follows Jill Valentine as she attempts to escape a zombie
+            outbreak while hunted by an intelligent bioweapon known as Nemesis-T
+            Type, and Carlos Oliveira, deployed by Umbrella as "damage control".
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Main Characters:</dt>
+          <dd>
+            <a href="../characters/jill-valentine.html">Jill Valentine</a>
+          </dd>
+          <dd>Carlos Oliveira</dd>
+        </div>
+        <div class="info-group">
+          <dt>Supporting Characters:</dt>
+          <dd>Nikolai Zinoviev</dd>
+          <dd>Mikhail Viktor</dd>
+          <dd>Tyrell Patrick</dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

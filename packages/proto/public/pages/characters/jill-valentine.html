@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { CharacterDetailsElement } from "/scripts/character-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "character-details": CharacterDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <character-details>
+      <img
+        slot="imgSrc"
+        src="../../images/character-portraits/jill-valentine.jpg"
+      />
+      <span slot="name">Jill Valentine</span>
+      <span slot="birthDate">1974</span>
+      <span slot="nationality">American (mixed French-Japanese)</span>
+      <span slot="sex">Female</span>
+      <span slot="gameAppearances">Resident Evil</span>
+      <span slot="movieAppearances">Resident Evil: Apocalypse</span>
+    </character-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/character-portraits/jill-valentine.jpg" />
+        <p>Chris Redfield</p>
+        <p>Date of birth: 1974</p>
+        <p>Race/Nationality: American (mixed French-Japanese)</p>
+        <p>Sex: Female</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Game appearances:</dt>
+          <dd>
+            <li><a href="../games/re1.html">Resident Evil</a></li>
+            <li><a href="../games/re3.html">Resident Evil 3</a></li>
+            <li><a href="../games/re5.html">Resident Evil 5</a></li>
+            <li>Resident Evil: Revelations</li>
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Movie appearances:</dt>
+          <dd>
+            <li>
+              <a href="../movies/re-apoc.html">Resident Evil: Apocalypse</a>
+            </li>
+            <li>Resident Evil: Afterlife</li>
+            <li>
+              <a href="../movies/re-retribution.html"
+                >Resident Evil: Retribution</a
+              >
+            </li>
+            <li>Resident Evil: Welcome to Racoon City</li>
+          </dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

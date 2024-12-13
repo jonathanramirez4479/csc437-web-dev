@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { MovieDetailsElement } from "/scripts/movie-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "movie-details": MovieDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <movie-details>
+      <img slot="imgSrc" src="../../images/movie-covers/re-extinction.jpeg" />
+      <span slot="title">Resident Evil: Extinction</span>
+      <span slot="releaseDate">September 21, 2007</span>
+      <span slot="genres">Horror, Action, Thriller</span>
+      <span slot="imdbRating">6.2</span>
+      <span slot="summary">
+        Survivors of the Raccoon City catastrophe travel across the Nevada
+        desert, hoping to make it to Alaska. Alice joins the caravan and their
+        fight against the evil Umbrella Corp.
+      </span>
+      <span slot="cast">Milla Jovovich</span>
+      <span slot="role">Alice</span>
+    </movie-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/movie-covers/re-extinction.jpeg" />
+        <p>Resident Evil: Extinction</p>
+        <p>September 21, 2007</p>
+        <p>Genres: Horror, Action, Thriller</p>
+        <p>IMDb: 6.2/10</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            Survivors of the Raccoon City catastrophe travel across the Nevada
+            desert, hoping to make it to Alaska. Alice joins the caravan and
+            their fight against the evil Umbrella Corp.
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Cast:</dt>
+          <dd>Milla Jovovich: Alice</dd>
+          <dd>
+            Ali Larter:
+            <a href="../characters/claire-redfield.html">Claire Redfield</a>
+          </dd>
+          <dd>Oded Fehr: Carlos Oliveira</dd>
+          <dd>Iain Glen: Dr. Isaacs</dd>
+          <dd>Christopher Egan: Mikey</dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

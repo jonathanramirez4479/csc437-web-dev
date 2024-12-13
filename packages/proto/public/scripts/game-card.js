@@ -19,7 +19,7 @@ export class GameCard extends HTMLElement {
     <template>
       <div class="card-container">
         <button id="edit">Edit</button>
-        <div class="view">
+        <a class="view" href="/games/resident-evil4.html">
           <slot name="imgSrc">
             <img src="/images/No_Image_Available.jpg" />
           </slot>
@@ -28,7 +28,7 @@ export class GameCard extends HTMLElement {
             <p><slot name="releaseYear">Release date</slot></p>
             <p><slot name="fanRating">0/5</slot></p>
           </div>
-        </div>
+        </a>
         <mu-form class="edit">
           <label>
             <span>Game Cover</span>

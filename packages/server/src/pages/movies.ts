@@ -31,7 +31,7 @@ export class MoviesPage {
   }
 
   renderMovie(movie: Movie) {
-    const { movieCode, title, imgSrc, releaseDate, imdbRating } = movie;
+    const { movieCode } = movie;
     return html` <movie-card src="/api/movies/${movieCode}"></movie-card> `;
   }
 

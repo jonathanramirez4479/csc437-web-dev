@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { GameDetailsElement } from "/scripts/game-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "game-details": GameDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <game-details>
+      <img slot="imgSrc" src="../../images/game-covers/re5.jpg" />
+      <span slot="title">Resident Evil 5</span>
+      <span slot="releaseDate">March 5, 2009</span>
+      <span slot="genre">Survival Horror</span>
+      <span slot="ignRating">9.3</span>
+      <span slot="publisher">Capcom</span>
+      <span slot="platforms"
+        >PlayStation 4, PlayStation 3, Nintendo Switch, Xbox One, Xbox 360,
+        Android, Microsoft Windows</span
+      >
+      <span slot="summary">
+        Raid on the Spencer Estate: In 2006, the Bioterrorism Security
+        Assessment Alliance receives intel on the whereabouts of Umbrella's
+        founder, Oswell E. Spencer. Jill Valentine and Chris Redfield are
+        ordered by the BSAA's European Headquarters to apprehend him. They
+        accept the mission in the hope of uncovering some information that might
+        lead them to Albert Wesker.</span
+      >
+      <span slot="mainCharacters">Chris Redfield</span>
+      <span slot="supportingCharacters">Albert Wesker</span>
+    </game-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/game-covers/re5.jpg" />
+        <p>Resident Evil 5</p>
+        <p>March 5, 2009</p>
+        <p>Genre: Survival Horror</p>
+        <p>IGN: 9.3/10</p>
+        <p>Publisher: Capcom</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Platforms:</dt>
+          <dd>
+            PlayStation 4, PlayStation 3, Nintendo Switch, Xbox One, Xbox 360,
+            Android, Microsoft Windows
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            Raid on the Spencer Estate: In 2006, the Bioterrorism Security
+            Assessment Alliance receives intel on the whereabouts of Umbrella's
+            founder, Oswell E. Spencer. Jill Valentine and Chris Redfield are
+            ordered by the BSAA's European Headquarters to apprehend him. They
+            accept the mission in the hope of uncovering some information that
+            might lead them to Albert Wesker.
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Main Characters:</dt>
+          <dd>
+            <a href="../characters/jill-valentine.html">Jill Valentine</a>
+          </dd>
+          <dd>
+            <a href="../characters/chris-redfield.html">Chris Redfield</a>
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Supporting Characters:</dt>
+          <dd>Sheva Alomar</dd>
+          <dd><a href="../characters/albert-wesker.html">Albert Wesker</a></dd>
+          <dd>Josh Stone</dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>
