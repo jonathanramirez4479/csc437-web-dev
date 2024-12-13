@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { GameDetailsElement } from "/scripts/game-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "game-details": GameDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <game-details>
+      <img slot="imgSrc" src="../../images/game-covers/re2.webp" />
+      <span slot="title">Resident Evil 2</span>
+      <span slot="releaseDate">January 25, 2009</span>
+      <span slot="genre">Survival Horror</span>
+      <span slot="ignRating">9/10</span>
+      <span slot="publisher">Capcom</span>
+      <span slot="platforms">
+        PlayStation 5, PlayStation 4, Xbox One, Nintendo Switch
+      </span>
+      <span slot="summary"
+        >The game begins with a truck driver hauling oil driving through the
+        plains of Arklay County, entirely unaware of the recent quarantine of
+        Raccoon City. Tired, eating a burger and listening to a talk radio
+        program featuring an eye-witness to Zombies, the truck plows straight
+        into a what seems like a woman walking on the highway. Panicked and
+        scared, the driver gets out of the truck to inspect on the woman. But
+        the woman rises up while his back is turned and attacks him. Elsewhere
+        in the plains, police rookie Leon S. Kennedy and university student
+        Claire Redfield stop off at the Mizoil Gas Station to fill up on petrol.
+        The first to arrive investigates a smashing sound inside, and finds an
+        Arklays County sheriff deputy being attacked by a Zombie. Zombies flock
+        from the surrounding area to the gas station, cornering Leon and Claire.
+        The two meet at the entrance, and evade the horde of zombies as they
+        rush to the deputy's car, which Leon drives into the city.</span
+      >
+      <span slot="mainCharacters">Claire Redfield</span>
+      <span slot="supportingCharacters">Ada Wong</span>
+    </game-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/game-covers/re2.webp" />
+        <p>Resident Evil 2</p>
+        <p>January 25, 2019</p>
+        <p>Genre: Survival Horror</p>
+        <p>IGN: 9/10</p>
+        <p>Publisher: Capcom</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Platforms:</dt>
+          <dd>PlayStation 5, PlayStation 4, Xbox One, Nintendo Switch</dd>
+        </div>
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            The game begins with a truck driver hauling oil driving through the
+            plains of Arklay County, entirely unaware of the recent quarantine
+            of Raccoon City. Tired, eating a burger and listening to a talk
+            radio program featuring an eye-witness to Zombies, the truck plows
+            straight into a what seems like a woman walking on the highway.
+            Panicked and scared, the driver gets out of the truck to inspect on
+            the woman. But the woman rises up while his back is turned and
+            attacks him. Elsewhere in the plains, police rookie Leon S. Kennedy
+            and university student Claire Redfield stop off at the Mizoil Gas
+            Station to fill up on petrol. The first to arrive investigates a
+            smashing sound inside, and finds an Arklays County sheriff deputy
+            being attacked by a Zombie. Zombies flock from the surrounding area
+            to the gas station, cornering Leon and Claire. The two meet at the
+            entrance, and evade the horde of zombies as they rush to the
+            deputy's car, which Leon drives into the city.
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Main Characters:</dt>
+          <dd>
+            <a href="../characters/claire-redfield.html">Claire Redfield</a>
+          </dd>
+          <dd><a href="../characters/leon-kennedy.html">Leon S. Kennedy</a></dd>
+        </div>
+        <div class="info-group">
+          <dt>Supporting Characters:</dt>
+          <dd>Ada Wong</dd>
+          <dd>Sherry Birkin</dd>
+          <dd>Annette Birkin</dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

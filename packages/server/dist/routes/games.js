@@ -57,6 +57,6 @@ router.put("/:_id", (req, res) => {
 });
 router.delete("/:_id", (req, res) => {
   const { _id } = req.params;
-  import_game_card_svc.default.remove(_id).then(() => res.status(204).end()).catch((err) => res.status(404).end());
+  import_game_card_svc.default.remove(_id).then(() => res.status(204).end()).catch((err) => res.status(404).send(err));
 });
 var games_default = router;

@@ -20,12 +20,12 @@
     </script>
     <script type="module">
       import { define } from "@calpoly/mustang";
-      import { LocationCard } from "/scripts/location-card.js";
       import { HeaderElement } from "/scripts/header-element.js";
+      import { LocationCardElement } from "/scripts/location-card.js";
 
       define({
-        "location-card": LocationCard,
         "header-element": HeaderElement,
+        "location-card": LocationCardElement,
       });
 
       HeaderElement.initializeOnce();
@@ -35,22 +35,34 @@
     <header-element></header-element>
     <main class="category-page">
       <location-card>
-        <img slot="image" src="/images/locations/rcpd.webp" />
+        <img slot="imgSrc" src="/images/locations/rcpd.webp" />
         <span slot="name">Racoon City Police Department</span>
-        <span slot="first-shown-in">Resident Evil 2</span>
-        <span slot="fan-rating">5/5</span>
+        <span slot="source">(Resident Evil 2)</span>
+        <span slot="fan-rating">Fan Rating:</span>
       </location-card>
       <location-card>
-        <img slot="image" src="/images/locations/rockfort-prison.webp" />
-        <span slot="name">Rockfort Prison</span>
-        <span slot="first-shown-in">Resident Evil Code: Veronica X</span>
-        <span slot="fan-rating">2.5/5</span>
-      </location-card>
-      <location-card>
-        <img slot="image" src="/images/locations/re3-downtown-rc.webp" />
+        <img slot="imgSrc" src="/images/locations/re3-downtown-rc.webp" />
         <span slot="name">Downtown Racoon City</span>
-        <span slot="first-shown-in">Resident Evil 3</span>
-        <span slot="fan-rating">4/5</span>
+        <span slot="source">(Resident Evil 3)</span>
+        <span slot="fan-rating">Fan Rating:</span>
+      </location-card>
+      <location-card>
+        <img slot="imgSrc" src="/images/locations/re4-village.webp" />
+        <span slot="name">The Village</span>
+        <span slot="source">(Resident Evil 4)</span>
+        <span slot="fan-rating">Fan Rating:</span>
+      </location-card>
+      <location-card>
+        <img slot="imgSrc" src="/images/locations/rockfort-prison.webp" />
+        <span slot="name">Rockfort Prison</span>
+        <span slot="source">(Resident Evil Code: Veronica)</span>
+        <span slot="fan-rating">Fan Rating:</span>
+      </location-card>
+      <location-card>
+        <img slot="imgSrc" src="/images/locations/the-morgue.webp" />
+        <span slot="name">The Morgue</span>
+        <span slot="source">(Resident Evil 2)</span>
+        <span slot="fan-rating">Fan Rating:</span>
       </location-card>
     </main>
   </body>

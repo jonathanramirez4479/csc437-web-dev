@@ -16,11 +16,14 @@ export class GamesPage {
       styles: [],
       scripts: [
         `
-        import { define } from "@calpoly/mustang";
+        import { define, Auth } from "@calpoly/mustang";
         import { GameCard } from "/scripts/game-card.js";
+        import { HeaderElement } from "/scripts/header-element.js";
         
         define ({
           "game-card": GameCard,
+          "mu-auth": Auth.Provider,
+          "header-element": HeaderElement
         });
         `,
       ],
@@ -28,7 +31,9 @@ export class GamesPage {
   }
 
   renderGame(game: Game) {
-    return html` <game-card src="/api/games/${game["_id"]}"> </game-card> `;
+    return html`
+      <game-card mode="view" src="/api/games/${game["_id"]}"> </game-card>
+    `;
   }
 
   renderBody() {
@@ -39,8 +44,10 @@ export class GamesPage {
 
     return html`
       <body>
-        <header-element></header-element>
-        <main class="category-page">${gamesHTML}</main>
+        <mu-auth provides="resident-evil:auth">
+          <header-element></header-element>
+          <main class="category-page">${gamesHTML}</main>
+        </mu-auth>
       </body>
     `;
   }

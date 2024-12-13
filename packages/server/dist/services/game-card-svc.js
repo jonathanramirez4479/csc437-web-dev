@@ -24,10 +24,15 @@ module.exports = __toCommonJS(game_card_svc_exports);
 var import_mongoose = require("mongoose");
 const GameSchema = new import_mongoose.Schema(
   {
-    imgSrc: { type: String, required: true, trim: true },
+    img: { data: Buffer, contentType: String },
     title: { type: String, required: true, trim: true },
     releaseDate: { type: Date, required: true },
-    fanRating: { type: Number, required: true }
+    ignRating: { type: Number, required: false },
+    genres: { type: [String], required: false },
+    publisher: { type: String, required: false },
+    summary: { type: String, required: false },
+    mainCharacters: { type: [String], required: false },
+    supportingCharacters: { type: [String], required: false }
   },
   { collection: "games" }
 );

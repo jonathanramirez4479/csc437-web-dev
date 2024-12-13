@@ -45,26 +45,33 @@ class GamesPage {
       styles: [],
       scripts: [
         `
-        import { define } from "@calpoly/mustang";
+        import { define, Auth } from "@calpoly/mustang";
         import { GameCard } from "/scripts/game-card.js";
+        import { HeaderElement } from "/scripts/header-element.js";
         
         define ({
           "game-card": GameCard,
+          "mu-auth": Auth.Provider,
+          "header-element": HeaderElement
         });
         `
       ]
     });
   }
   renderGame(game) {
-    return import_server.html` <game-card src="/api/games/${game["_id"]}"> </game-card> `;
+    return import_server.html`
+      <game-card mode="view" src="/api/games/${game["_id"]}"> </game-card>
+    `;
   }
   renderBody() {
     const games_list = this.data;
     const gamesHTML = games_list ? import_server.html` ${games_list.map(this.renderGame)} ` : "";
     return import_server.html`
       <body>
-        <header-element></header-element>
-        <main class="category-page">${gamesHTML}</main>
+        <mu-auth provides="resident-evil:auth">
+          <header-element></header-element>
+          <main class="category-page">${gamesHTML}</main>
+        </mu-auth>
       </body>
     `;
   }

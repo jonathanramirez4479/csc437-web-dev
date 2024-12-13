@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { MovieDetailsElement } from "/scripts/movie-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "movie-details": MovieDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <movie-details>
+      <img slot="imgSrc" src="../../images/movie-covers/re-apocalypse.jpg" />
+      <span slot="title">Resident Evil: Apocalypse</span>
+      <span slot="releaseDate">September 12, 2004</span>
+      <span slot="genres">Horror, Action, Thriller</span>
+      <span slot="imdbRating">6.1</span>
+      <span slot="summary">
+        A deadly virus from a secret Umbrella Corporation laboratory underneath
+        Raccoon City is exposed to the world. Umbrella seals off the city to
+        contain the virus, creating a ghost town where everyone trapped inside
+        turns into a mutant zombie. Alice (Milla Jovovich), a survivor from
+        Umbrella's secret lab, meets former Umbrella security officer Jill
+        Valentine (Sienna Guillory) and mercenary Carlos Oliviera (Oded Fehr).
+        Together, they search for a scientist (Jared Harris) who might be able
+        to help.
+      </span>
+      <span slot="cast">Milla Jovovich</span>
+      <span slot="role">Alice</span>
+    </movie-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/movie-covers/re-apocalypse.jpg" />
+        <p>Resident Evil: Apocalypse</p>
+        <p>September 12, 2004</p>
+        <p>Genres: Horror, Action, Thriller</p>
+        <p>IMDb: 6.1/10</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            A deadly virus from a secret Umbrella Corporation laboratory
+            underneath Raccoon City is exposed to the world. Umbrella seals off
+            the city to contain the virus, creating a ghost town where everyone
+            trapped inside turns into a mutant zombie. Alice (Milla Jovovich), a
+            survivor from Umbrella's secret lab, meets former Umbrella security
+            officer Jill Valentine (Sienna Guillory) and mercenary Carlos
+            Oliviera (Oded Fehr). Together, they search for a scientist (Jared
+            Harris) who might be able to help.
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Cast:</dt>
+          <dd>Milla Jovovich: Alice</dd>
+          <dd>
+            Sienna Guillory:
+            <a href="../characters/jill-valentine.html">Jill Valentine</a>
+          </dd>
+          <dd>Oded Fehr: Carlos Oliveira</dd>
+          <dd>Jared Harris: Dr. Ashford</dd>
+          <dd>Sophie Vavasseur: Angie Ashford</dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

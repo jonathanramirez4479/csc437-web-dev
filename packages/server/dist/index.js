@@ -22,17 +22,34 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var import_express = __toESM(require("express"));
+var import_mongo = require("./services/mongo");
+var import_promises = __toESM(require("node:fs/promises"));
+var import_path = __toESM(require("path"));
+var import_auth = __toESM(require("./routes/auth"));
+var import_auth2 = require("./pages/auth");
 var import_games = require("./pages/games");
 var import_game_card_svc = __toESM(require("./services/game-card-svc"));
-var import_mongo = require("./services/mongo");
 var import_games2 = __toESM(require("./routes/games"));
+var import_movies = require("./pages/movies");
+var import_movie_card_svc = __toESM(require("./services/movie-card-svc"));
+var import_movies2 = __toESM(require("./routes/movies"));
+var import_characters = require("./pages/characters");
+var import_character_card_svc = __toESM(require("./services/character-card-svc"));
+var import_characters2 = __toESM(require("./routes/characters"));
+var import_locations = require("./pages/locations");
+var import_location_card_svc = __toESM(require("./services/location-card-svc"));
+var import_locations2 = __toESM(require("./routes/locations"));
 (0, import_mongo.connect)("Resident-Evil-Wiki-DB");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
 const staticDir = process.env.STATIC || "public";
 app.use(import_express.default.static(staticDir));
-app.use(import_express.default.json());
-app.use("/api/games", import_games2.default);
+app.use(import_express.default.json({ limit: "2mb" }));
+app.use("/auth", import_auth.default);
+app.use("/api/games", import_auth.authenticateUser, import_games2.default);
+app.use("/api/movies", import_auth.authenticateUser, import_movies2.default);
+app.use("/api/characters", import_auth.authenticateUser, import_characters2.default);
+app.use("/api/locations", import_auth.authenticateUser, import_locations2.default);
 app.get("/hello", (req, res) => {
   res.send("<h5>Hello world</h5>");
 });
@@ -41,6 +58,32 @@ app.get("/games", (req, res) => {
     const page = new import_games.GamesPage(data);
     res.set("Content-Type", "text/html").send(page.render());
   });
+});
+app.get("/movies", (req, res) => {
+  import_movie_card_svc.default.index().then((data) => {
+    const page = new import_movies.MoviesPage(data);
+    res.set("Content-Type", "text/html").send(page.render());
+  });
+});
+app.get("/characters", (req, res) => {
+  import_character_card_svc.default.index().then((data) => {
+    const page = new import_characters.CharactersPage(data);
+    res.set("Content-Type", "text/html").send(page.render());
+  });
+});
+app.get("/locations", (req, res) => {
+  import_location_card_svc.default.index().then((data) => {
+    const page = new import_locations.LocationsPage(data);
+    res.set("Content-Type", "text/html").send(page.render());
+  });
+});
+app.get("/login", (req, res) => {
+  const page = new import_auth2.LoginPage();
+  res.set("Content-Type", "text/html").send(page.render());
+});
+app.use("/app", (req, res) => {
+  const indexHtml = import_path.default.resolve(staticDir, "index.html");
+  import_promises.default.readFile(indexHtml, { encoding: "utf8" }).then((html) => res.send(html));
 });
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

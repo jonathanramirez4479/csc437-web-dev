@@ -16,7 +16,15 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var models_exports = {};
 module.exports = __toCommonJS(models_exports);
 __reExport(models_exports, require("./game"), module.exports);
+__reExport(models_exports, require("./movie"), module.exports);
+__reExport(models_exports, require("./character"), module.exports);
+__reExport(models_exports, require("./location"), module.exports);
+__reExport(models_exports, require("./credential"), module.exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  ...require("./game")
+  ...require("./game"),
+  ...require("./movie"),
+  ...require("./character"),
+  ...require("./location"),
+  ...require("./credential")
 });

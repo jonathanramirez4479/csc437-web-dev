@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { GameDetailsElement } from "/scripts/game-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "game-details": GameDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <game-details>
+      <img slot="imgSrc" src="/images/game-covers/resident-evil.webp" />
+      <span slot="title">Resident Evil</span>
+      <span slot="releaseDate">March 22, 1996</span>
+      <span slot="genre">Survival Horror</span>
+      <span slot="ignRating">8.5</span>
+      <span slot="publisher">Capcom</span>
+      <span slot="platforms"
+        >PlayStation, PlayStation 3, PlayStation Portable, Microsoft Windows,
+        Nintendo DS, Sega Saturn</span
+      >
+      <span slot="summary"
+        >The game begins on the night of Friday 24 July 1998. The Special
+        Tactics and Rescue Service, a police special forces unit consisting of
+        ex-soldiers and scientists, has been assigned into the Arklay Mountains
+        to investigate a series of cannibalistic homicides conducted by an
+        unidentified group of people. Split into two teams, the "Bravo Team",
+        sent out the previous night, has ceased radio contact, forcing the
+        "Alpha Team" to investigate their disappearance on top of completing the
+        mission.</span
+      >
+      <span slot="mainCharacters">Chris Redfield</span>
+      <span slot="supportingCharacters">Albert Wesker</span>
+    </game-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/game-covers/resident-evil.webp" />
+        <p>Resident Evil</p>
+        <p>March 22, 1996</p>
+        <p>Genre: Survival Horror</p>
+        <p>IGN: 8/10</p>
+        <p>Publisher: Capcom</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Platforms:</dt>
+          <dd>
+            PlayStation, PlayStation 3, PlayStation Portable, Microsoft Windows,
+            Nintendo DS, Sega Saturn
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            The game begins on the night of Friday 24 July 1998. The Special
+            Tactics and Rescue Service, a police special forces unit consisting
+            of ex-soldiers and scientists, has been assigned into the Arklay
+            Mountains to investigate a series of cannibalistic homicides
+            conducted by an unidentified group of people. Split into two teams,
+            the "Bravo Team", sent out the previous night, has ceased radio
+            contact, forcing the "Alpha Team" to investigate their disappearance
+            on top of completing the mission.
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Main Characters:</dt>
+          <dd>Chris Redfield</dd>
+          <dd>Jill Valentine</dd>
+        </div>
+        <div class="info-group">
+          <dt>Supporting Characters:</dt>
+          <dd>Albert Wesker</dd>
+          <dd>Barry Burton</dd>
+          <dd>Rebecca Chambers</dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

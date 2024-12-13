@@ -1,29 +1,57 @@
-import { css, html, shadow, Events } from "@calpoly/mustang";
+import {
+  css,
+  html,
+  define,
+  shadow,
+  Events,
+  Observer,
+  Dropdown,
+} from "@calpoly/mustang";
 import reset from "./styles/reset.css.js";
 
 export class HeaderElement extends HTMLElement {
+  static uses = define({
+    "mu-dropdown": Dropdown.Element,
+  });
+
   static template = html`
     <template>
       <header>
         <div id="primary-header">
+          <a slot="actuator">
+            Hello,
+            <span id="userid"></span>
+          </a>
           <div class="title">
             <h1>Resident Evil Wiki</h1>
             <svg class="icon">
               <use href="/icons/umbrella-corp.svg#icon-umbrella-corp" />
             </svg>
           </div>
-          <label class="dark-mode-switch">
-            <input type="checkbox" autocomplete="off" />
-            Dark mode
-          </label>
+          <mu-dropdown>
+            <menu>
+              <li>
+                <label class="dark-mode-switch">
+                  <input type="checkbox" autocomplete="off" />
+                  Dark mode
+                </label>
+              </li>
+              <li class="when-signed-in">
+                <a id="signout">Sign Out</a>
+              </li>
+              <li class="when-signed-out">
+                <a href="/login">Sign In</a>
+              </li>
+            </menu>
+          </mu-dropdown>
           <img class="profile-pic" src="/images/profile-pic.jpg" />
         </div>
         <div id="sub-header">
-          <h5><a href="../index.html">Home</a></h5>
-          <h5><a href="/pages/games.html">Games</a></h5>
-          <h5><a href="/pages/movies.html">Movies</a></h5>
-          <h5><a href="/pages/characters.html">Characters</a></h5>
-          <h5><a href="/pages/locations.html">Locations</a></h5>
+          <h5><a href="/index.html">Home</a></h5>
+          <h5><a href="/games">Games</a></h5>
+          <h5><a href="/movies">Movies</a></h5>
+          <h5><a href="/characters">Characters</a></h5>
+          <h5><a href="/locations">Locations</a></h5>
         </div>
       </header>
     </template>
@@ -101,7 +129,44 @@ export class HeaderElement extends HTMLElement {
     header a:visited {
       color: inherit;
     }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      flex-basis: max-content;
+      align-items: end;
+    }
+    a[slot="actuator"] {
+      color: var(--color-link-inverted);
+      cursor: pointer;
+    }
+    #userid:empty::before {
+      content: "user";
+    }
+    menu a {
+      color: var(--color-link);
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    a:has(#userid:empty) ~ menu > .when-signed-in,
+    a:has(#userid:not(:empty)) ~ menu > .when-signed-out {
+      display: none;
+    }
   `;
+
+  get userid() {
+    return this._userid.textContent;
+  }
+
+  set userid(id) {
+    if (id === "anonymous") {
+      this._userid.textContent = "";
+      this._signout.disabled = true;
+    } else {
+      this._userid.textContent = id;
+      this._signout.disabled = false;
+    }
+  }
 
   constructor() {
     super();
@@ -115,6 +180,31 @@ export class HeaderElement extends HTMLElement {
       Events.relay(event, "dark-mode", {
         checked: event.target.checked,
       });
+    });
+
+    this._userid = this.shadowRoot.querySelector("#userid");
+    this._signout = this.shadowRoot.querySelector("#signout");
+
+    this._signout.addEventListener("click", (event) =>
+      Events.relay(event, "auth:message", ["auth/signout"])
+    );
+  }
+
+  _authObserver = new Observer(this, "resident-evil:auth");
+
+  get authorization() {
+    return (
+      this._user?.authenticated && {
+        Authorization: `Bearer ${this._user.token}`,
+      }
+    );
+  }
+
+  connectedCallback() {
+    this._authObserver.observe(({ user }) => {
+      if (user && user.username !== this.userid) {
+        this.userid = user.username;
+      }
     });
   }
 

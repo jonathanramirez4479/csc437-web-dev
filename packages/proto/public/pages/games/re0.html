@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { GameDetailsElement } from "/scripts/game-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "game-details": GameDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <game-details>
+      <img slot="imgSrc" src="../../images/game-covers/re0.jpg" />
+      <span slot="title">Resident Evil 0</span>
+      <span slot="releaseDate">November 12, 2002</span>
+      <span slot="genre">Survival Horror</span>
+      <span slot="ignRating">6.5</span>
+      <span slot="publisher">Capcom</span>
+      <span slot="platforms"
+        >GameCube, Playstation 4, Nintendo Switch, Wii, Playstation 3, Xbox One,
+        Xbox 360, Microsoft Windows</span
+      >
+      <span slot="summary"
+        >Faced with the relentless Zombies and other horrifying creatures,
+        S.T.A.R.S. officer Rebecca Chambers makes an alliance with Billy Coen,
+        an escaped criminal. Unknowingly, Rebecca stumbles into the prelude of
+        an event where she will be tested to her limits and her greatest fears
+        will be realised. Together, Billy and Rebecca must survive the nightmare
+        and expose the dark secrets of what has caused it.</span
+      >
+      <span slot="mainCharacters">Rebecca Chambers</span>
+      <span slot="supportingCharacters">James Marcus</span>
+    </game-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/game-covers/re0.jpg" />
+        <p>Resident Evil 0</p>
+        <p>November 12, 2002</p>
+        <p>Genre: Survival Horror</p>
+        <p>IGN: 6.5/10</p>
+        <p>Publisher: Capcom</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Platforms:</dt>
+          <dd>
+            GameCube, Playstation 4, Nintendo Switch, Wii, Playstation 3, Xbox
+            One, Xbox 360, Microsoft Windows
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            Faced with the relentless Zombies and other horrifying creatures,
+            S.T.A.R.S. officer Rebecca Chambers makes an alliance with Billy
+            Coen, an escaped criminal. Unknowingly, Rebecca stumbles into the
+            prelude of an event where she will be tested to her limits and her
+            greatest fears will be realised. Together, Billy and Rebecca must
+            survive the nightmare and expose the dark secrets of what has caused
+            it.
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Main Characters:</dt>
+          <dd>Rebecca Chambers</dd>
+          <dd>Billy Coen</dd>
+        </div>
+        <div class="info-group">
+          <dt>Supporting Characters:</dt>
+          <dd>James Marcus</dd>
+          <dd>William Birkin</dd>
+          <dd><a href="../characters/albert-wesker.html">Albert Wesker</a></dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

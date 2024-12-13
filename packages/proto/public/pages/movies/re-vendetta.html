@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { MovieDetailsElement } from "/scripts/movie-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "movie-details": MovieDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <movie-details>
+      <img slot="imgSrc" src="../../images/movie-covers/re-vendetta.webp" />
+      <span slot="title">Resident Evil: Vendetta</span>
+      <span slot="releaseDate">June 19, 2017</span>
+      <span slot="genres">Horror, Action, Thriller</span>
+      <span slot="imdbRating">6.2</span>
+      <span slot="summary">
+        A vengeful enemy unleashes a brutal and deadly new virus, and BSAA
+        Captain Chris Redfield enlists the help of Agent Leon S Kennedy and
+        Professor Rebecca Chambers to take down the madman and stop the spread
+        of the virus in New York City.
+      </span>
+      <span slot="cast">Kevin Dorman</span>
+      <span slot="role">Chris Redfield</span>
+    </movie-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/movie-covers/re-vendetta.webp" />
+        <p>Resident Evil: Vendetta</p>
+        <p>June 19, 2017</p>
+        <p>Genres: Horror, Action, Thriller</p>
+        <p>IMDb: 6.2/10</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            A vengeful enemy unleashes a brutal and deadly new virus, and BSAA
+            Captain Chris Redfield enlists the help of Agent Leon S Kennedy and
+            Professor Rebecca Chambers to take down the madman and stop the
+            spread of the virus in New York City.
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Cast:</dt>
+          <dd>
+            Kevin Dorman:
+            <a href="../characters/chris-redfield.html">Chris Redfield</a>
+          </dd>
+          <dd>
+            Matthew Mercer:
+            <a href="../characters/leon-kennedy.html">Leon S.Kennedy</a>
+          </dd>
+          <dd>Erin Cahill: Rebecca Chambers</dd>
+          <dd>Karen Strassman: Cathy White</dd>
+          <dd>Kari Wahlgren: Nadia</dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

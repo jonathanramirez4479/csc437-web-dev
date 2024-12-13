@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { LocationDetailsElement } from "/scripts/location-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "location-details": LocationDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <location-details>
+      <img slot="imgSrc" src="../../images/locations/re3-downtown-rc.webp" />
+      <span slot="location">Downtown Racoon City</span>
+      <span slot="fanRating">9.2</span>
+      <span slot="gameAppearances">Resident Evil 3</span>
+      <span slot="movieAppearances">Resident Evil: Apocalypse</span>
+    </location-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/locations/re3-downtown-rc.webp" />
+        <p>Downtown Racoon City</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Game appearances:</dt>
+          <dd>
+            <li><a href="../games/re3.html">Resident Evil 3</a></li>
+            <li>Resident Evil: Operation Racoon City</li>
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Movie appearances:</dt>
+          <dd>
+            <li>
+              <a href="../movies/re-apoc.html">Resident Evil: Apocalypse</a>
+            </li>
+            <li>Resident Evil: Welcome to Racoon City</li>
+          </dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>

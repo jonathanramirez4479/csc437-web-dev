@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/page.css" />
+    <link rel="stylesheet" href="/styles/details-page.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="importmap">
+      {
+        "imports": {
+          "@calpoly/mustang": "https://unpkg.com/@calpoly/mustang"
+        }
+      }
+    </script>
+    <script type="module">
+      import { define } from "@calpoly/mustang";
+      import { HeaderElement } from "/scripts/header-element.js";
+      import { MovieDetailsElement } from "/scripts/movie-details.js";
+
+      define({
+        "header-element": HeaderElement,
+        "movie-details": MovieDetailsElement,
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </head>
+  <body>
+    <header-element></header-element>
+    <movie-details>
+      <img slot="imgSrc" src="../../images/movie-covers/re.jpg" />
+      <span slot="title">Resident Evil</span>
+      <span slot="releaseDate">March 12, 2002</span>
+      <span slot="genres">Horror, Action, Thriller</span>
+      <span slot="imdbRating">6.6</span>
+      <span slot="summary">
+        Based on the popular video game, Milla Jovovich and Michelle Rodriguez
+        star as the leaders of a commando team who must break into "the hive," a
+        vast underground genetics laboratory operated by the powerful Umbrella
+        Corporation. There, a deadly virus has been unleashed, killing the lab's
+        personnel and resurrecting them as the evil Un-dead. The team has just
+        three hours to shut down the lab's supercomputer and close the facility
+        before the virus threatens to overrun the Earth.
+      </span>
+      <span slot="cast">Milla Jovovich</span>
+      <span slot="role">Alice</span>
+    </movie-details>
+    <!-- <main>
+      <a href="../index.html">back to Home</a>
+      <section class="primary-info">
+        <img src="/images/movie-covers/re.jpg" />
+        <p>Resident Evil</p>
+        <p>March 12, 2002</p>
+        <p>Genres: Horror, Action, Thriller</p>
+        <p>IMDb: 6.6/10</p>
+      </section>
+      <section class="secondary-info">
+        <div class="info-group">
+          <dt>Summary:</dt>
+          <dd>
+            Based on the popular video game, Milla Jovovich and Michelle
+            Rodriguez star as the leaders of a commando team who must break into
+            "the hive," a vast underground genetics laboratory operated by the
+            powerful Umbrella Corporation. There, a deadly virus has been
+            unleashed, killing the lab's personnel and resurrecting them as the
+            evil Un-dead. The team has just three hours to shut down the lab's
+            supercomputer and close the facility before the virus threatens to
+            overrun the Earth.
+          </dd>
+        </div>
+        <div class="info-group">
+          <dt>Cast:</dt>
+          <dd>Milla Jovovich: Alice</dd>
+          <dd>Michelle Rodriguez: Rain Ocampo</dd>
+          <dd>Eric Mabius: Matt Adison</dd>
+          <dd>Martin Crewes: Chad Kaplan</dd>
+          <dd>Colin Salmon: James 'One' Shade</dd>
+        </div>
+      </section>
+    </main> -->
+  </body>
+</html>
